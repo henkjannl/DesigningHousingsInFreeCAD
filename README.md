@@ -29,33 +29,45 @@ I this example, we want to create a fairly complex housing which consists of two
 4. Then we create the top housing as a boolean operation between the housing and the top separation
 The general concept of this tutorial is to create a housing out of three bodies, and then use the boolean operator from the part workbench to 
 
-![General concept](./images/01-concept/concept.png)
+![Concept](./images/01-concept/concept.png)
 
 The housing is created as the first body named **Housing**, in this example it consists of an additive loft and a subtractive loft.
 
-![Housing](./images/01-concept/housing.png)
+<p align="center">
+  <img src="./images/01-concept/housing.png" alt="Housing body" width="650">
+</p>
 
 Then we create another body in the same part, and we call it **Separation top**. In this example, it constists of a pad and an additive pipe that creates the rim. Not that the pad is deliberately larger than the housing.
 
-![Separation top](./images/01-concept/separation-top.png)
+<p align="center">
+  <img src="./images/01-concept/separation-top.png" alt="Separation top" width="650">
+</p>
 
 We also create **Separation bottom** as a single body.
 
-![Separation bottom](./images/01-concept/separation-bottom.png)
+<p align="center">
+  <img src="./images/01-concept/separation-bottom.png" alt="Separation bottom" width="650">
+</p>
 
 Next we move to the part workbench. We select **Housing** and **Separation top**, and choose the Intersection command from the toolbar.
 
-![Housing top](./images/01-concept/housing-top.png)
+<p align="center">
+  <img src="./images/01-concept/housing-top.png" alt="Housing top" width="650">
+</p>
 
 A new body named **Common** is created, consisting of the boolean intersection of both selected bodies. We rename that part **Housing top**.
 
 It may seem as if the **Housing** body has disappeared from the model tree, so we can no longer select it to create the bottom housing. However, if we expand the **Housing top** body, we can see that **Housing** is still there. We can now select the **Housing** body and the **Separation bottom** body and we can again apply the intersect tool on those two bodies. The resulting body is named **Common 001**. We rename it to **Housing bottom**.
 
-![Housing bottom](./images/01-concept/housing-bottom.png)
+<p align="center">
+  <img src="./images/01-concept/housing-bottom.png" alt="Housing top" width="650">
+</p>
 
 After modifying the color and transparency of both housing parts, the result looks like this:
 
-![Result](./images/01-concept/result.png)
+<p align="center">
+  <img src="./images/01-concept/result.png" alt="Result" width="650">
+</p>
 
 
 # Making changes to the housing
