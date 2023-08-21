@@ -20,12 +20,12 @@ To follow this tutorial, you need to be familiar with the part design workbench 
 - [Creating references to external parts](#creating-references-to-external-parts)
 
 # Concept of making a housing using boolean operation of bodies
-I this example, we want to create a housing which consists of two shells which can be assembled together.
-1. First create the housing (1) as a single body, without worrying about the separation.
-2. Then create a second body (2) separation top, which covers which part of the housing will become the top half of the housing
-3. Then create a bottom separation (3) as a third body in the same way
-4. Then create the top housing as a boolean operation between the housing and the top separation
-5. Then also create the bottom housing as a boolean operation between the housing and the bottom separation
+I this example, we want to create a housing which consists of two shells which can be assembled together:
+1. Create the housing (1) as a single body, without worrying about the separation.
+2. Create a second body (2) separation top, which covers which part of the housing will become the top half of the housing
+3. Create a bottom separation (3) as a third body in the same way
+4. Create the top housing as a boolean operation between the housing and the top separation
+5. Create the bottom housing as a boolean operation between the housing and the bottom separation
 
 ![Concept](./images/01-concept/concept.png)
 
@@ -53,7 +53,7 @@ Next move to the part workbench. Select **Housing** and **Separation top**, and 
   <img src="./images/01-concept/housing-top.png" alt="Housing top" width="650">
 </p>
 
-Thus a new body named **Common** is created, consisting of the boolean intersection of both selected bodies. We rename that body **Housing top** (1 & 2).
+Thus a new body named **Common** is created, consisting of the boolean intersection of both selected bodies. Rename that body **Housing top** (1 & 2).
 
 It may seem as if the **Housing** body has disappeared from the model tree, so we can no longer select it to create the bottom housing. However, if we expand the **Housing top** body, we can see that **Housing** is still there since it was used to make up the **Housing top**. Select the **Housing** body and the **Separation bottom** body and apply the `Intersection` command again on those two bodies. The resulting body is named **Common 001**. Rename it to **Housing bottom** (1 & 3).
 
@@ -137,15 +137,30 @@ As can be seen in this screenshot, both the top of the rim and the sides of the 
 
 If the number of bodies and features in the model tree grows, it becomes increasingly difficult to indentify the right feature if you want to make changes. It becomes helpful to choose unique and meaningful names for features. I have developed my own system which is as follows:
 
-* within each body, the name of each feature is preceded by two letters that are a loose abbreviation of that body (**HS** for housing, **ST** for separation top, **SB** for separation bottom, etc.)
-* some features receive a 3 letter code for the type of feature after that abreviation:
-  * **pln** for a plane
-  * **axs** for an axis
-  * **ref** for a shape binder
-* non-volumetric features such as sketches and planes use lower case names, volumes use Sentence case names (e.g., a sketch may be named **hs base**, and the pad that is created using that sketch is named **HS Base**)
-* for additive and subtractive pipes:
-  * the trajectory of the pipe is followed by **trj**
-  * the cross section is followed by **crs**
+| Type of feature         | Case          | Code              |
+|-------------------------|---------------|-------------------|
+| Volumetric features     | Sentence case | `Bd Name`         |
+| Non-volumetric features | lowercase     | `bd typ name ext` | 
+
+Non-volumetric features such as sketches and planes use lower case names. Volumes use Sentence case names (e.g., a sketch may be named **hs base**, and the pad that is created using that sketch is named **HS Base**)
+
+| Code   | Meaning                                                                                                              |
+|:------:|----------------------------------------------------------------------------------------------------------------------|
+| `Bd`   | a loose abbreviation of the body (**HS** for housing, **ST** for separation top, **SB** for separation bottom, etc.) |
+| `Typ`  | a 3 letter code for the type of feature after that abreviation: <br> **pln** for a plane <br> **axs** for an axis <br> **ref** for a shape binder |
+| `Name` | The name of the feature |
+| `ext`  | for additive and subtractive pipes: <br> the trajectory of the pipe is followed by **trj** <br> the cross section is followed by **crs** |
+
+Examples:
+
+| Name of the feature | Purpose                                                                                             |
+|---------------------|-----------------------------------------------------------------------------------------------------|
+| `sk top`            | Top view of the part in the **Skeleton** body                                                       |
+| `hs ref top`        | Shape binder in the housing body, referencing the top view in the **Skeleton** body                 |
+| `hs pln bottom`     | Datum plane in the housing body, representing the bottom of the **Housing** body                    |
+| `sb groove crs`     | Cross section of the groove in the **Separation bottom** body                                       |
+| `sb groove trj`     | Trajectory of the groove in the **Separation bottom** body                                          |
+| `SB Groove`         | The 3D groove in the **Separation bottom** body, made up of **sb groove crs** and **sb groove trj** |
 
 It is helpful to choose a pragmatic approach: for simple projects, the overhead of renaming every feature may not be worth the effort.
 
@@ -277,6 +292,30 @@ The graph shows that:
 
 # Creating references to the internal components of the housing
 
+In the next example, we will build a housing for an internet of things application. The device will contain a thermometer/barometer/hygrometer connected to a microcontroller. The microcontroller can record the environmental conditions and report logging information over a wireless link.
+
+For projects like this, it is important to obtain accurate 3D models. Usually they are available as STEP file or in another format which can be imported in FreeCAD.
+
+Import the electronic components in the FreeCAD file and orient them well. In this project there is a risk that the heat of the wifi module of the microcontroller affects the temperature measurement of the sensor, so it is important to minimize thermal crosstalk when designing the housing.
+
+<p align="center">
+  <img src="./images/08-referencing-components/import-components.png" alt="Result" width="600">
+</p>
+
+Create the **Skeleton** body. In the skeleton, import important geometry of the components using shape binders. This way, the sketches in the skeleton can dynamically follow the components when the components are moved.
+
+<p align="center">
+  <img src="./images/08-referencing-components/references-to-components.png" alt="Result" width="600">
+</p>
+
+Create the basic sketches in the **Skeleton** body
+
+<p align="center">
+  <img src="./images/08-referencing-components/sketches-in-skeleton.png" alt="Result" width="600">
+</p>
+
+
+
 # Using self tapping screws to close the housing
 
 <p align="center">
@@ -287,3 +326,4 @@ The graph shows that:
 # Creating a complex hinge
 
 # Creating references to external parts
+
