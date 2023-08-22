@@ -1,8 +1,7 @@
 # Introduction
-This tutorial I’ll demonstrate how to design 3D printable housings in FreeCAD. The advantage of this approach is that it is quite structured,
-and you can manage changes in the design quite well, even if the design gets complex.
+This tutorial demonstrates how to design 3D printable housings in FreeCAD. The advantage of this approach is that it is quite structured, and you can manage changes in the design quite well, even if the design gets complex.
 
-To follow this tutorial, you need to be familiar with the part design workbench and the sketcher. I’ll try to just focus on a high conceptal level.
+To follow this tutorial, you need to be familiar with the part design workbench and the sketcher. I’ll try to just focus on a high conceptual level.
 
 # Topics in this document
 - [Introduction](#introduction)
@@ -10,10 +9,12 @@ To follow this tutorial, you need to be familiar with the part design workbench 
 - [Concept of making a housing using boolean operation of bodies](#concept-of-making-a-housing-using-boolean-operation-of-bodies)
 - [Making changes to the housing](#making-changes-to-the-housing)
 - [Maintaining the colors of both housing bodies](#maintaining-the-colors-of-both-housing-bodies)
-- [Checking the result in the slicer](#checking-the-result-in-the-slicer)
 - [Applying a naming convention for bodies and features](#applying-a-naming-convention-for-bodies-and-features)
 - [Using a skeleton to drive dimensions of the bodies](#using-a-skeleton-to-drive-dimensions-of-the-bodies)
-- [Checking links between features using the dependency graph](#checking-links-between-features-using-the-dependency-graph)
+- [Checking the model](#checking-the-model)
+  - [Checking links](#checking-links)
+  - [Using the Check geometry tool](#using-the-check-geometry-tool)
+  - [Checking the result in the slicer](#checking-the-result-in-the-slicer)
 - [Creating references to the internal components of the housing](#creating-references-to-the-internal-components-of-the-housing)
 - [Using self tapping screws to close the housing](#using-self-tapping-screws-to-close-the-housing)
 - [Creating a complex hinge](#creating-a-complex-hinge)
@@ -117,22 +118,6 @@ Another advantage of this workaround is that we can create multiple copies in va
   <img src="./images/03-maintaining-colors/different-orientations.png" alt="Result" width="650">
 </p>
 
-# Checking the result in the slicer
-
-Perhaps a little sidestep: I'm using this technique often for 3D printing projects. One of the lessons I learned the hard way is that it is important to regularly check if the parts are printable.
-
-Things to specifically pay attention to:
-- are all details still large enough to print?
-- would a different orientation of the separation plane make printing easier?
-- is it possible to avoid support structures easily?
-- is it possible to reduce print time by making other design choices?
-
-<p align="center">
-  <img src="./images/04-checking-in-slicer/slicing.png" alt="Result" width="500">
-</p>
-
-As can be seen in this screenshot, both the top of the rim and the sides of the the groove are printale with multiple adjacent tracks. The dark blue lines indicate that the protrusion around the power connector is partially unsupported, but since these areas are very small, we will probably be fine.
-
 # Applying a naming convention for bodies and features
 
 If the number of bodies and features in the model tree grows, it becomes increasingly difficult to indentify the right feature if you want to make changes. It becomes helpful to choose unique and meaningful names for features. I have developed my own system which is as follows:
@@ -183,7 +168,7 @@ In this example, the **Skeleton** body contains a number of sketches:
 Besides, it also contains some helper planes that were used to create these sketches. The sketches also refer to each other: for instance, the length of the housing is both defined in **sk front** and in **sk bottom**. Therefore, **sk bottom** refers to **sk front** to obtain the length so the length is defined only once.
 
 <p align="center">
-  <img src="./images/06-skeleton-body/skeleton.png" alt="Result" width="650">
+  <img src="./images/05-skeleton-body/skeleton.png" alt="Result" width="650">
 </p>
 
 Now create a second body with the name **Housing**. It is not possible to create links to sketches in other bodies like we are used to. We first need to create a *Shape binder*:
@@ -193,7 +178,7 @@ Now create a second body with the name **Housing**. It is not possible to create
 * Rename the shape binder **hs ref front** (I will explain the name convention later)
 
 <p align="center">
-  <img src="./images/06-skeleton-body/shape-binder.png" alt="Result" width="650">
+  <img src="./images/05-skeleton-body/shape-binder.png" alt="Result" width="650">
 </p>
 
 Repeat the procedure for **sk bottom** and rename is **hs ref bottom**. Now make the **Skeleton** body invisible using the spacebar. Then create a plane where the bottom sketch will be drawn:
@@ -201,14 +186,14 @@ Repeat the procedure for **sk bottom** and rename is **hs ref bottom**. Now make
 2. Also select a point at the bottom of the housing in the model.
 
 <p align="center">
-  <img src="./images/06-skeleton-body/select-z-axis-and-point-on-bottom.png" alt="Result" width="500">
+  <img src="./images/05-skeleton-body/select-z-axis-and-point-on-bottom.png" alt="Result" width="500">
 </p>
 
 3. Now create a plane using the `Datum Plane` button on the toolbar
 4. Select 'normal to edge' in the Datum plane parameter window and click OK
 
 <p align="center">
-  <img src="./images/06-skeleton-body/create-bottom-plane.png" alt="Result" width="500">
+  <img src="./images/05-skeleton-body/create-bottom-plane.png" alt="Result" width="500">
 </p>
 
 We now have a plane that we can use for the bottom sketch. Now create the bottom sketch of the housing by simply tracing the **hs ref bottom** shape binder.
@@ -216,13 +201,13 @@ We now have a plane that we can use for the bottom sketch. Now create the bottom
 Repeat the same procedure with the top plane. It is possible to reference the oblique edge of the front view by changing the sketch view to isometric and selecting the oblique edge
 
 <p align="center">
-  <img src="./images/06-skeleton-body/selecting-nose.png" alt="Result" width="600">
+  <img src="./images/05-skeleton-body/selecting-nose.png" alt="Result" width="600">
 </p>
 
 A chamfer is added to the top and bottom edges of the housing. The cavity inside the housing is created in a similar way as the outer shape.
 
 <p align="center">
-  <img src="./images/06-skeleton-body/housing.png" alt="Result" width="600">
+  <img src="./images/05-skeleton-body/housing.png" alt="Result" width="600">
 </p>
 
 Note that:
@@ -233,54 +218,56 @@ Note that:
 The **Separation bottom** body is created in a similar way:
 
 <p align="center">
-  <img src="./images/06-skeleton-body/separation-bottom.png" alt="Result" width="600">
+  <img src="./images/05-skeleton-body/separation-bottom.png" alt="Result" width="600">
 </p>
 
 As goes for **Separation top**:
 
 <p align="center">
-  <img src="./images/06-skeleton-body/separation-top.png" alt="Result" width="600">
+  <img src="./images/05-skeleton-body/separation-top.png" alt="Result" width="600">
 </p>
 
 With boolean operations and refined shapes, both halves look like:
 
 <p align="center">
-  <img src="./images/06-skeleton-body/housing-separated.png" alt="Result" width="500">
+  <img src="./images/05-skeleton-body/housing-separated.png" alt="Result" width="500">
 </p>
 
 The proof of the pudding is in the eating. We change a few dimensions in the **sk front** sketch in the **Skeleton** body to see if the model is indeed parametric:
 
 <p align="center">
-  <img src="./images/06-skeleton-body/change-dimensions-front.png" alt="Result" width="500">
+  <img src="./images/05-skeleton-body/change-dimensions-front.png" alt="Result" width="500">
 </p>
 
 Indeed, the result is as expected:
 
 <p align="center">
-  <img src="./images/06-skeleton-body/result-of-change.png" alt="Result" width="500">
+  <img src="./images/05-skeleton-body/result-of-change.png" alt="Result" width="500">
 </p>
 
 It appears that the wall of the bottom part is too thin to support the groove, so the inner wall of the groove is no longer there. The correction for this can be made in the same sketch:
 
 <p align="center">
-  <img src="./images/06-skeleton-body/correction-of-wall-thickness.png" alt="Result" width="500">
+  <img src="./images/05-skeleton-body/correction-of-wall-thickness.png" alt="Result" width="500">
 </p>
 
 This effectively fixes the groove:
 
 <p align="center">
-  <img src="./images/06-skeleton-body/groove-repaired.png" alt="Result" width="500">
+  <img src="./images/05-skeleton-body/groove-repaired.png" alt="Result" width="500">
 </p>
 
-# Checking links between features using the dependency graph
+# Checking the model
+
+## Checking links
 
 It can sometimes (although rarely) occur that links between bodies cause errors that are very hard to find. Sometimes the problem is that there are crosslinks between bodies, i.e. body A refers to body B and body B refers back to body A. This circular reference causes FreeCAD to stop automatic recalculation of the part.
 
-The dependency graph (menu Tools > Dependency Graph) can be very helpful to spot those errors. To use this tool, the third party software [Graphviz](https://graphviz.org/) needs to be installed.
+The dependency graph (menu Tools > Dependency Graph) can be very helpful to spot those errors. To use this tool, the third party software [Graphviz](https://graphviz.org/) needs to be installed, see [https://wiki.freecad.org/Std_DependencyGraph](https://wiki.freecad.org/Std_DependencyGraph).
 
-The dependency graph of the housing looks like this:
+The dependency graph of the housing looks like this (labels with large fonts were added manually):
 
-![Dependency graph](./images/07-dependency-graph/dependency-graph.svg)
+![Dependency graph](./images/06-check-model/dependency-graph.svg)
 
 The graph shows that:
 * Bodies **Separation Top**, **Separation Bottom** and **Housing** all refer to the **Skeleton** body 
@@ -289,6 +276,28 @@ The graph shows that:
 * Bodies **Housing bottom refined** and **Housing top refined** refer to **Housing bottom** and **Housing top** respectively
 * References made by the **Part workbench** act on bodies, while references made by the **Part design workbench** act on features
 * All arrows between the parts are black, indicating there are no errors in this graph
+
+## Using the Check geometry tool
+
+The Check geometry tool from the part workbench can be used to check if the 3D model is valid (Part workbench > Part > Check geometry ![Dependency graph](./images/06-check-model/check-geometry-button-small.png)). It is beyond the scope of this tutorial to explain how to solve common problems. MangoJelly has an [excellent video](https://www.youtube.com/watch?v=bw1Y5mrHrWY) on this tool. If causes are hard to find, the FreeCAD community is also willing to help out.
+
+## Checking the result in the slicer
+
+Perhaps a little sidestep: I'm using this technique often for 3D printing projects. One of the lessons I learned the hard way is that it is important to regularly check if the parts are printable.
+
+Things to specifically pay attention to:
+- are all details still large enough to print?
+- would a different orientation of the separation plane make printing easier?
+- is it possible to avoid support structures easily?
+- is it possible to reduce print time by making other design choices?
+
+<p align="center">
+  <img src="./images/04-checking-in-slicer/slicing.png" alt="Result" width="500">
+</p>
+
+As can be seen in this screenshot, both the top of the rim and the sides of the the groove are printale with multiple adjacent tracks. The dark blue lines indicate that the protrusion around the power connector is partially unsupported, but since these areas are very small, we will probably be fine.
+
+
 
 # Creating references to the internal components of the housing
 
@@ -299,27 +308,38 @@ For projects like this, it is important to obtain accurate 3D models. Usually th
 Import the electronic components in the FreeCAD file and orient them well. In this project there is a risk that the heat of the wifi module of the microcontroller affects the temperature measurement of the sensor, so it is important to minimize thermal crosstalk when designing the housing.
 
 <p align="center">
-  <img src="./images/08-referencing-components/import-components.png" alt="Result" width="600">
+  <img src="./images/07-referencing-components/import-components.png" alt="Result" width="600">
 </p>
 
-Create the **Skeleton** body. In the skeleton, import important geometry of the components using shape binders. This way, the sketches in the skeleton can dynamically follow the components when the components are moved.
+Create the **Skeleton** body. In the skeleton, import important geometry of the components using shape binders. This way, the sketches in the skeleton will dynamically follow the components when the components are moved.
 
 <p align="center">
-  <img src="./images/08-referencing-components/references-to-components.png" alt="Result" width="600">
+  <img src="./images/07-referencing-components/references-to-components.png" alt="Result" width="600">
 </p>
 
-Create the basic sketches in the **Skeleton** body
+Create the sketches in the **Skeleton** body. 
 
 <p align="center">
-  <img src="./images/08-referencing-components/sketches-in-skeleton.png" alt="Result" width="600">
+  <img src="./images/07-referencing-components/sketches-in-skeleton.png" alt="Result" width="600">
 </p>
 
+Create the **Housing**, **Separation top**, **Separation bottom**, **Housing top** and **Housing bottom** like in the previous example.
+
+<p align="center">
+  <img src="./images/07-referencing-components/final-housing-bottom.png" alt="Result" width="600">
+</p>
+
+<p align="center">
+  <img src="./images/07-referencing-components/final-housing-total.png" alt="Result" width="600">
+</p>
+
+We can now move the boards around, and (within certain limits), the cavities in the housing will follow the components.
 
 
 # Using self tapping screws to close the housing
 
 <p align="center">
-  <img src="./images/10-self-tapping-screws/self-tapping-screws.png" alt="Screws" width="300">
+  <img src="./images/08-self-tapping-screws/self-tapping-screws.png" alt="Screws" width="150">
 </p>
 
 
