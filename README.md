@@ -352,7 +352,9 @@ In order to make the screw holes parametric, I created a model of the screw whic
   <img src="./images/08-self-tapping-screws/additional-sketch.svg" alt="Screws" width="600">
 </p>
 
-$\textcolor{red}{\textsf{:warning: In reality, these screws are not conical. Some day I will make a model that more closely resembles the shape of these screws. .}}$ 
+![Warning](./images/08-self-tapping-screws/warning.svg)
+
+![Warning](./images/08-self-tapping-screws/warning2.svg)
 
 ## Creating a screw hole
 This is how it works:
@@ -370,7 +372,7 @@ Insert screw in the model using File > Merge project
 5. Add a construction geometry line to this sketch, representing the centerline of the screw. I usually make the length equal to an arbitrary other line of the sketch to make the sketch fully defined.
 
 <p align="center">
-  <img src="./images/08-self-tapping-screws/create-sketch.png" alt="Screws" width="500">
+  <img src="./images/08-self-tapping-screws/create-sketch.png" alt="Screws" width="250">
 </p>
 
 6. Create a Groove **HS Screw hole 1** based on this sketch, choosing the construction line as a centerline.
@@ -389,18 +391,47 @@ To solve this, we can make a local pillar in the bottom housing and a hole in th
 1. Create a shape binder **sk ref screw pillar 1** in the **Skeleton** body.
 2. Make the model of the original screw invisible 
 3. Create a datum plane **sk pln screw pillar 1** like we did in the housing
-4. Create a sketch **sk screw pillar 1** that represents both the pillar in the **Bottom housing** and the hole in the **Top housing**. The top of the pillar must align with the separation plane in the screw hole, the bottom of the pillar is aligned with the lower line of the separation
+4. Create a sketch **sk screw pillar 1** that represents both the pillar in the **Bottom housing** and the hole in the **Top housing**. The top of the pillar must align with the separation plane in the screw hole, the bottom of the pillar is aligned with the lower line of the separation. Ensure the centerline of the pillar/hole is also a geometry line. We want to refer to it lateron.
+
+<p align="center">
+  <img src="./images/08-self-tapping-screws/alignment-of-pillar-height.svg" alt="Screws" width="650">
+</p>
+
 5. Make **Separation bottom** the active body
 6. Create a shape binder of **sk screw pillar 1** from the **Skeleton** body and rename it **sb ref screw pillar 1**
 7. Create a datum plane **sb pln screw pillar 1** like we did in the housing
-8. Create a sketch **sb screw pillar 1** to create the pillar, and add a geometry line that will be the center line of the pillar
-9. Create a revolution and name it **SB Screw pillar 1**
-5. Make **Separation top** the active body
-6. Create a shape binder of **sk screw pillar 1** from the **Skeleton** body and rename it **st ref screw pillar 1**
-7. Create a datum plane **st pln screw pillar 1** like we did in the housing
-8. Create a sketch **st screw pillar 1** to create the hole for the pillar, and add a geometry line that will be the center line of the groove
-9. Create a groove and name it **ST Screw pillar 1**
 
+<p align="center">
+  <img src="./images/08-self-tapping-screws/datum-plane-in-separation-bottom.png" alt="Screws" width="650">
+</p>
+
+8. Create a sketch **sb screw pillar 1** to create the pillar, and add a geometry line that will be the center line of the pillar
+
+<p align="center">
+  <img src="./images/08-self-tapping-screws/screw-pillar-sketch-in-separation-bottom.png" alt="Screws" width="300">
+</p>
+  In this case, I extended the bottom of the pillar so it would also fit the V-groove. Also, do not forget the centerline.
+
+9.  Create a revolution and name it **SB Screw pillar 1** 
+10. Repeat the same procedure for the other pillars. In this case, I did pillar 3 in the same way and created pillars 2 and 4 by mirroring.
+
+<p align="center">
+  <img src="./images/08-self-tapping-screws/separation-bottom-with-pillars.png" alt="Other pillars" width="400">
+</p>
+
+Also repeat the procedure to create the holes in **Separation top**.
+
+<p align="center">
+  <img src="./images/08-self-tapping-screws/screw-holes-in-separation-top.png" alt="Other pillars" width="400">
+</p>
+
+The changes will now automatically come through in both housing parts:
+
+<p align="center">
+  <img src="./images/08-self-tapping-screws/housing-completed.png" alt="Housing completed" width="400">
+</p>
+
+This is a good example to demonstrate that some changes need modifications in the housing part, while others require changes in the separation parts.
 
 # Creating a complex hinge
 
