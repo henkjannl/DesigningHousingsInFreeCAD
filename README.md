@@ -17,7 +17,6 @@ To follow this tutorial, you need to be familiar with the part design workbench 
   - [Checking the result in the slicer](#checking-the-result-in-the-slicer)
 - [Creating references to the internal components of the housing](#creating-references-to-the-internal-components-of-the-housing)
 - [Using self tapping screws to close the housing](#using-self-tapping-screws-to-close-the-housing)
-      - [$\\textcolor{red}{\\textsf{In reality, these screws are not conical. Some day I will make a model that more closely resembles the shape of these screws. .}}$](#textcolorredtextsfin-reality-these-screws-are-not-conical-some-day-i-will-make-a-model-that-more-closely-resembles-the-shape-of-these-screws-)
   - [Creating a screw hole](#creating-a-screw-hole)
   - [Creating a pillar for the screw](#creating-a-pillar-for-the-screw)
 - [Creating a complex hinge](#creating-a-complex-hinge)
@@ -353,9 +352,7 @@ In order to make the screw holes parametric, I created a model of the screw whic
   <img src="./images/08-self-tapping-screws/additional-sketch.svg" alt="Screws" width="600">
 </p>
 
-:warning: <span style="color:red"> In reality, these screws are not conical. Some day I will make a model that more closely resembles the shape of these screws.</span>
-
-#### $\textcolor{red}{\textsf{In reality, these screws are not conical. Some day I will make a model that more closely resembles the shape of these screws. .}}$ 
+:warning:  $\textcolor{red}{\textsf{In reality, these screws are not conical. Some day I will make a model that more closely resembles the shape of these screws. .}}$ 
 
 ## Creating a screw hole
 This is how it works:
