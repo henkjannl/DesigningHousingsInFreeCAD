@@ -263,9 +263,9 @@ This effectively fixes the groove:
 
 It can sometimes (although rarely) occur that links between bodies cause errors that are very hard to find. Sometimes the problem is that there are crosslinks between bodies, i.e. body A refers to body B and body B refers back to body A. This circular reference causes FreeCAD to stop automatic recalculation of the part.
 
-The dependency graph (menu Tools > Dependency Graph) can be very helpful to spot those errors. To use this tool, the third party software [Graphviz](https://graphviz.org/) needs to be installed, see [https://wiki.freecad.org/Std_DependencyGraph](https://wiki.freecad.org/Std_DependencyGraph).
+The dependency graph (menu Tools > Dependency Graph) can be very helpful to spot those errors. To use this tool, the third party software [Graphviz](https://graphviz.org/) needs to be installed (see [https://wiki.freecad.org/Std_DependencyGraph](https://wiki.freecad.org/Std_DependencyGraph)).
 
-The dependency graph of the housing looks like this (labels with large fonts were added manually):
+The dependency graph of the housing looks like this (text balloons were added manually):
 
 ![Dependency graph](./images/06-check-model/dependency-graph.svg)
 
@@ -283,7 +283,7 @@ The Check geometry tool from the part workbench can be used to check if the 3D m
 
 ## Checking the result in the slicer
 
-Perhaps a little sidestep: I'm using this technique often for 3D printing projects. One of the lessons I learned the hard way is that it is important to regularly check if the parts are printable.
+I'm using this technique often for 3D printing projects. One of the lessons I learned the hard way is that it is important to regularly check if the parts are printable.
 
 Things to specifically pay attention to:
 - are all details still large enough to print?
@@ -292,7 +292,7 @@ Things to specifically pay attention to:
 - is it possible to reduce print time by making other design choices?
 
 <p align="center">
-  <img src="./images/04-checking-in-slicer/slicing.png" alt="Result" width="500">
+  <img src="./images/06-check-model/slicing.png" alt="Result" width="500">
 </p>
 
 As can be seen in this screenshot, both the top of the rim and the sides of the the groove are printale with multiple adjacent tracks. The dark blue lines indicate that the protrusion around the power connector is partially unsupported, but since these areas are very small, we will probably be fine.
@@ -338,10 +338,19 @@ We can now move the boards around, and (within certain limits), the cavities in 
 
 # Using self tapping screws to close the housing
 
+I often use self tapping screws for these housings. With the right tolerances, these screws work really well and require no post processing (tapping, inserts) in the parts, which makes it quite fast. These screws are available from many different suppliers at AliExpress.
+
 <p align="center">
   <img src="./images/08-self-tapping-screws/self-tapping-screws.png" alt="Screws" width="150">
 </p>
 
+In order to make the screw holes parametric, I created a model of the screw which contains an additional sketch representing the hole in the housing.
+
+<p align="center">
+  <img src="./images/08-self-tapping-screws/additional-sketch.svg" alt="Screws" width="600">
+</p>
+
+:warning: <span style="color:red"> In reality, these screws are not conical. Some day I will make a model that more closely resembles the shape of these screws.</span>
 
 # Creating a complex hinge
 
