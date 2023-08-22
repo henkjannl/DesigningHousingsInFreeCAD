@@ -17,6 +17,9 @@ To follow this tutorial, you need to be familiar with the part design workbench 
   - [Checking the result in the slicer](#checking-the-result-in-the-slicer)
 - [Creating references to the internal components of the housing](#creating-references-to-the-internal-components-of-the-housing)
 - [Using self tapping screws to close the housing](#using-self-tapping-screws-to-close-the-housing)
+      - [$\\textcolor{red}{\\textsf{In reality, these screws are not conical. Some day I will make a model that more closely resembles the shape of these screws. .}}$](#textcolorredtextsfin-reality-these-screws-are-not-conical-some-day-i-will-make-a-model-that-more-closely-resembles-the-shape-of-these-screws-)
+  - [Creating a screw hole](#creating-a-screw-hole)
+  - [Creating a pillar for the screw](#creating-a-pillar-for-the-screw)
 - [Creating a complex hinge](#creating-a-complex-hinge)
 - [Creating references to external parts](#creating-references-to-external-parts)
 
@@ -351,6 +354,56 @@ In order to make the screw holes parametric, I created a model of the screw whic
 </p>
 
 :warning: <span style="color:red"> In reality, these screws are not conical. Some day I will make a model that more closely resembles the shape of these screws.</span>
+
+#### $\textcolor{red}{\textsf{In reality, these screws are not conical. Some day I will make a model that more closely resembles the shape of these screws. .}}$ 
+
+## Creating a screw hole
+This is how it works:
+
+Insert screw in the model using File > Merge project
+1. Create a shape binder **hs ref screw hole 1** in the **Housing** body, referencing the screw hole sketch from the model of the screw (no need to make an intermediate reference in the **Skeleton** body)
+2. Make the model of the original screw invisible (so we can only select elements fro the shape binder)
+3. Select three points on the shape binder of the hole, and create a datum plane **hs pln screw hole 1** through these points
+
+<p align="center">
+  <img src="./images/08-self-tapping-screws/create-datum-plane.png" alt="Screws" width="500">
+</p>
+
+4. Create a sketch **hs screw hole 1** on this datum plane, tracing one half of the screw hole
+5. Add a construction geometry line to this sketch, representing the centerline of the screw. I usually make the length equal to an arbitrary other line of the sketch to make the sketch fully defined.
+
+<p align="center">
+  <img src="./images/08-self-tapping-screws/create-sketch.png" alt="Screws" width="500">
+</p>
+
+6. Create a Groove **HS Screw hole 1** based on this sketch, choosing the construction line as a centerline.
+
+<p align="center">
+  <img src="./images/08-self-tapping-screws/create-groove.png" alt="Screws" width="600">
+</p>
+
+Now if we move the screw to another location in x, y or z-direction, the shape binder **hs ref screw hole 1** and the datum plane **hs pln screw hole 1** will move with it, and thus the hole in the part will be fully parametric.
+
+## Creating a pillar for the screw
+It may occur that the seperation of the housing does not line up with the separation in the screw hole model. For instance, In the housing model I lined up the separation in the middle of the USB port, so the housing can be closed easily. 
+
+To solve this, we can make a local pillar in the bottom housing and a hole in the top housing.
+
+1. Create a shape binder **sk ref screw pillar 1** in the **Skeleton** body.
+2. Make the model of the original screw invisible 
+3. Create a datum plane **sk pln screw pillar 1** like we did in the housing
+4. Create a sketch **sk screw pillar 1** that represents both the pillar in the **Bottom housing** and the hole in the **Top housing**. The top of the pillar must align with the separation plane in the screw hole, the bottom of the pillar is aligned with the lower line of the separation
+5. Make **Separation bottom** the active body
+6. Create a shape binder of **sk screw pillar 1** from the **Skeleton** body and rename it **sb ref screw pillar 1**
+7. Create a datum plane **sb pln screw pillar 1** like we did in the housing
+8. Create a sketch **sb screw pillar 1** to create the pillar, and add a geometry line that will be the center line of the pillar
+9. Create a revolution and name it **SB Screw pillar 1**
+5. Make **Separation top** the active body
+6. Create a shape binder of **sk screw pillar 1** from the **Skeleton** body and rename it **st ref screw pillar 1**
+7. Create a datum plane **st pln screw pillar 1** like we did in the housing
+8. Create a sketch **st screw pillar 1** to create the hole for the pillar, and add a geometry line that will be the center line of the groove
+9. Create a groove and name it **ST Screw pillar 1**
+
 
 # Creating a complex hinge
 
