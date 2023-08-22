@@ -352,7 +352,7 @@ In order to make the screw holes parametric, I created a model of the screw whic
   <img src="./images/08-self-tapping-screws/additional-sketch.svg" alt="Screws" width="600">
 </p>
 
-:warning:  $\textcolor{red}{\textsf{In reality, these screws are not conical. Some day I will make a model that more closely resembles the shape of these screws. .}}$ 
+$\textcolor{red}{\textsf{:warning: In reality, these screws are not conical. Some day I will make a model that more closely resembles the shape of these screws. .}}$ 
 
 ## Creating a screw hole
 This is how it works:
