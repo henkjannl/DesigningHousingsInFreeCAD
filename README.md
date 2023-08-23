@@ -12,15 +12,23 @@ To follow this tutorial, you need to be familiar with the part design workbench 
 - [Applying a naming convention for bodies and features](#applying-a-naming-convention-for-bodies-and-features)
 - [Using a skeleton to drive dimensions of the bodies](#using-a-skeleton-to-drive-dimensions-of-the-bodies)
 - [Checking the model](#checking-the-model)
-  - [Checking links](#checking-links)
   - [Using the Check geometry tool](#using-the-check-geometry-tool)
+  - [Checking links](#checking-links)
   - [Checking the result in the slicer](#checking-the-result-in-the-slicer)
 - [Creating references to the internal components of the housing](#creating-references-to-the-internal-components-of-the-housing)
 - [Using self tapping screws to close the housing](#using-self-tapping-screws-to-close-the-housing)
   - [Creating a screw hole](#creating-a-screw-hole)
   - [Creating a pillar for the screw](#creating-a-pillar-for-the-screw)
 - [Creating a complex hinge](#creating-a-complex-hinge)
-- [Creating references to external parts](#creating-references-to-external-parts)
+  - [Housing external](#housing-external)
+  - [Housing internal](#housing-internal)
+  - [Housing](#housing)
+  - [Separation bottom](#separation-bottom)
+  - [Housing bottom](#housing-bottom)
+  - [Separation top](#separation-top)
+  - [Housing top](#housing-top)
+  - [Final checks](#final-checks)
+- [Referencing external parts](#referencing-external-parts)
 
 # Concept of making a housing using boolean operation of bodies
 I this example, we want to create a housing which consists of two shells which can be assembled together:
@@ -160,53 +168,74 @@ One way of keeping this structured is to start with a **Skeleton** body which on
 
 Another advantage of a skeleton body is that it makes the model more robust. If sketches refer to 3D geometry, such as edges of the body, the model quickly becomes unstable since names of those edges are changed when making small changes (the notorious [Topological Naming Problem](https://wiki.freecad.org/Topological_naming_problem) ). When referring to edges in sketches instead, it is less likely that names of those edges are changed. This is especially true if we keep these sketches small and simple. It is therefore better to create a large number of simple sketches instead of a few complex ones.
 
+
+When we use tools such as a pad or a pocket to extrude geometry, the geometry is partially driven by a sketch, but partially by the number that defines how long the extrusion is. In order to make the design fully driven by a sketch, we choose another approach.
+
+We first create two datum planes: one at the beginning of the extrude and one at the end. The sketch sits on the first plane, the extrude is done to the next datum plane. These datum planes are defined by features from the skeleton. 
+
+To define the planes, we use an edge and a point, and we define the datum plane 'normal to edge'.
+
+<p align="center">
+  <img src="./images/05-skeleton-body/datum-plane-to-drive-the-model.svg" alt="Datum plane" width="350">
+</p>
+
+The 'front side' of the datum plane, on which a sketch is created, is sometimes counter intuitive, so it seems as if you need to draw a mirrorred sketch. To solve this, set the 'Map reversed' property of the datum plane to 'True'. It is best to do this early on in the process, since it often corrupts the sketch.
+
+
 In this example, the **Skeleton** body contains a number of sketches:
 * **sk front**: the front view of the housing 
 * **sk separation**: the separation lines for both the top and the bottom separations
-* **sk bottom**: the bottom view of the housing
+* **sk top**: the top view of the housing
 * **sk rim trj**: the trajectory that the rim and the groove must follow
 * **sk rim crs**: the cross sections of both the rim and the groove
 
-Besides, it also contains some helper planes that were used to create these sketches. The sketches also refer to each other: for instance, the length of the housing is both defined in **sk front** and in **sk bottom**. Therefore, **sk bottom** refers to **sk front** to obtain the length so the length is defined only once.
+Besides, it also contains a helper plane at the bottom of the separation that is used for the trajectory of the rim. The sketches also refer to each other: for instance, the length of the housing is both defined in **sk front** and in **sk bottom**. Therefore, **sk bottom** refers to **sk front** to obtain the length so the length is defined only once.
 
 <p align="center">
   <img src="./images/05-skeleton-body/skeleton.png" alt="Result" width="650">
 </p>
 
+For instance, **sk front** looks like this:
+
+<p align="center">
+  <img src="./images/05-skeleton-body/sk-front.png" alt="sk front" width="500">
+</p>
+
+In **sk top**, the width of the outer body and the width of the cavity are defined, but all other dimensions are derived from the **sk front** sketch or the **sk separation** sketch:
+
+<p align="center">
+  <img src="./images/05-skeleton-body/sk-top.png" alt="sk front" width="500">
+</p>
+
+
 Now create a second body with the name **Housing**. It is not possible to create links to sketches in other bodies like we are used to. We first need to create a *Shape binder*:
-* Ensure that **Housing** is the active body
-* Select the **sk front** sketch in the **Skeleton** body
-* Use the `Create a sub-object(s) shape binder`-button on the toolbar to create a shape binder
-* Rename the shape binder **hs ref front** (I will explain the name convention later)
+1. Ensure that **Housing** is the active body
+2. Select the **sk front** sketch in the **Skeleton** body
+3. Use the `Create a sub-object(s) shape binder`-button on the toolbar to create a shape binder
+4. Rename the shape binder **hs ref front**
+5. Repeat these steps for **sk top**
+
+Use elements from **hs ref top** to define four datum planes, from left to right:
+1. **hs pln outside left**, that will be used for the sketch of the outer shape
+2. **hs pln inside left**, for the shape of the cavity
+3. **hs pln inside right** that is used as an end plane for the inner cavity
+4. **hs pln outside right** that is used as an end plane for the housing
 
 <p align="center">
-  <img src="./images/05-skeleton-body/shape-binder.png" alt="Result" width="650">
+  <img src="./images/05-skeleton-body/four-datum-planes.png" alt="Result" width="450">
 </p>
 
-Repeat the procedure for **sk bottom** and rename is **hs ref bottom**. Now make the **Skeleton** body invisible using the spacebar. Then create a plane where the bottom sketch will be drawn:
-1. Select the Z-axis of the **Housing** body in the model tree, 
-2. Also select a point at the bottom of the housing in the model.
+Use the **hs pln left outside** plane to draw **hs base** that defines the left side of the housing. **hs base** retrieves the shape from **hs ref front**.
+
+Use **hs pln left inside** to draw the **hs cavity** sketch. This is extruded as **HS Cavity** until **hs pln inside right** to create **HS Cavity**
 
 <p align="center">
-  <img src="./images/05-skeleton-body/select-z-axis-and-point-on-bottom.png" alt="Result" width="500">
+  <img src="./images/05-skeleton-body/side-sketches.png" alt="Result" width="600">
 </p>
 
-3. Now create a plane using the `Datum Plane` button on the toolbar
-4. Select 'normal to edge' in the Datum plane parameter window and click OK
-
-<p align="center">
-  <img src="./images/05-skeleton-body/create-bottom-plane.png" alt="Result" width="500">
-</p>
-
-We now have a plane that we can use for the bottom sketch. Now create the bottom sketch of the housing by simply tracing the **hs ref bottom** shape binder.
-
-Repeat the same procedure with the top plane. It is possible to reference the oblique edge of the front view by changing the sketch view to isometric and selecting the oblique edge
-
-<p align="center">
-  <img src="./images/05-skeleton-body/selecting-nose.png" alt="Result" width="600">
-</p>
-
-A chamfer is added to the top and bottom edges of the housing. The cavity inside the housing is created in a similar way as the outer shape.
+**hs base** is extruded until **hs pln outside right** to form **HS Base**.
+Chamfers and fillets are added to the outside of the housing.
+**hs cavity** is extruded until **hs pln inside right** to create **HS Cavity**,
 
 <p align="center">
   <img src="./images/05-skeleton-body/housing.png" alt="Result" width="600">
@@ -232,56 +261,42 @@ As goes for **Separation top**:
 With boolean operations and refined shapes, both halves look like:
 
 <p align="center">
-  <img src="./images/05-skeleton-body/housing-separated.png" alt="Result" width="500">
+  <img src="./images/05-skeleton-body/housing-separated.png" alt="Result" width="600">
 </p>
 
 The proof of the pudding is in the eating. We change a few dimensions in the **sk front** sketch in the **Skeleton** body to see if the model is indeed parametric:
 
 <p align="center">
-  <img src="./images/05-skeleton-body/change-dimensions-front.png" alt="Result" width="500">
+  <img src="./images/05-skeleton-body/sk-front-after-change.png" alt="Result" width="500">
 </p>
 
-Indeed, the result is as expected:
+The result is as expected:
 
 <p align="center">
-  <img src="./images/05-skeleton-body/result-of-change.png" alt="Result" width="500">
-</p>
-
-It appears that the wall of the bottom part is too thin to support the groove, so the inner wall of the groove is no longer there. The correction for this can be made in the same sketch:
-
-<p align="center">
-  <img src="./images/05-skeleton-body/correction-of-wall-thickness.png" alt="Result" width="500">
-</p>
-
-This effectively fixes the groove:
-
-<p align="center">
-  <img src="./images/05-skeleton-body/groove-repaired.png" alt="Result" width="500">
+  <img src="./images/05-skeleton-body/result-of-change.png" alt="Result" width="600">
 </p>
 
 # Checking the model
+
+## Using the Check geometry tool
+
+The Check geometry tool from the part workbench can be used to check if the 3D model is valid (Part workbench > Part > Check geometry ![Dependency graph](./images/06-check-model/check-geometry-button-small.png)). It is beyond the scope of this tutorial to explain how to solve common problems. MangoJelly has an [excellent video](https://www.youtube.com/watch?v=bw1Y5mrHrWY) on this tool. If causes are hard to find, the FreeCAD community is also willing to help out.
 
 ## Checking links
 
 It can sometimes (although rarely) occur that links between bodies cause errors that are very hard to find. Sometimes the problem is that there are crosslinks between bodies, i.e. body A refers to body B and body B refers back to body A. This circular reference causes FreeCAD to stop automatic recalculation of the part.
 
-The dependency graph (menu Tools > Dependency Graph) can be very helpful to spot those errors. To use this tool, the third party software [Graphviz](https://graphviz.org/) needs to be installed (see [https://wiki.freecad.org/Std_DependencyGraph](https://wiki.freecad.org/Std_DependencyGraph)).
+The dependency graph (menu Tools > Dependency Graph) can be very helpful to spot those errors. To use this tool, the third party software [Graphviz](https://graphviz.org/) must be installed (see [https://wiki.freecad.org/Std_DependencyGraph](https://wiki.freecad.org/Std_DependencyGraph)).
 
-The dependency graph of the housing looks like this (text balloons were added manually):
+The dependency graph of the housing looks like this (text balloons were added manually to improve readability):
 
 ![Dependency graph](./images/06-check-model/dependency-graph.svg)
 
 The graph shows that:
-* Bodies **Separation Top**, **Separation Bottom** and **Housing** all refer to the **Skeleton** body 
+* All bodies directly or indirectly refer to the **Skeleton** body 
 * Body **Housing top** refers to **Separation top** and **Housing**
-* Body **Housing bottom** refers to **Separation bottom** and **Housing**
-* Bodies **Housing bottom refined** and **Housing top refined** refer to **Housing bottom** and **Housing top** respectively
 * References made by the **Part workbench** act on bodies, while references made by the **Part design workbench** act on features
 * All arrows between the parts are black, indicating there are no errors in this graph
-
-## Using the Check geometry tool
-
-The Check geometry tool from the part workbench can be used to check if the 3D model is valid (Part workbench > Part > Check geometry ![Dependency graph](./images/06-check-model/check-geometry-button-small.png)). It is beyond the scope of this tutorial to explain how to solve common problems. MangoJelly has an [excellent video](https://www.youtube.com/watch?v=bw1Y5mrHrWY) on this tool. If causes are hard to find, the FreeCAD community is also willing to help out.
 
 ## Checking the result in the slicer
 
@@ -303,7 +318,7 @@ As can be seen in this screenshot, both the top of the rim and the sides of the 
 
 # Creating references to the internal components of the housing
 
-In the next example, we will build a housing for an internet of things application. The device will contain a thermometer/barometer/hygrometer connected to a microcontroller. The microcontroller can record the environmental conditions and report logging information over a wireless link.
+In the next example, we will build a housing for an internet of things application. The device will contain a thermometer/barometer/hygrometer connected to a microcontroller. The microcontroller can record the environmental conditions and report logged data over a wireless link.
 
 For projects like this, it is important to obtain accurate 3D models. Usually they are available as STEP file or in another format which can be imported in FreeCAD.
 
@@ -340,7 +355,7 @@ We can now move the boards around, and (within certain limits), the cavities in 
 
 # Using self tapping screws to close the housing
 
-I often use self tapping screws for these housings. With the right tolerances, these screws work really well and require no post processing (tapping, inserts) in the parts, which makes it quite fast. These screws are available from many different suppliers at AliExpress.
+I often use self tapping screws for such housings. With the right tolerances, these screws work really well and require no post processing (tapping, inserts) in the parts, which makes it quite fast. These screws are available from many different suppliers at AliExpress.
 
 <p align="center">
   <img src="./images/08-self-tapping-screws/self-tapping-screws.png" alt="Screws" width="150">
@@ -384,7 +399,7 @@ Insert screw in the model using File > Merge project
 Now if we move the screw to another location in x, y or z-direction, the shape binder **hs ref screw hole 1** and the datum plane **hs pln screw hole 1** will move with it, and thus the hole in the part will be fully parametric.
 
 ## Creating a pillar for the screw
-It may occur that the seperation of the housing does not line up with the separation in the screw hole model. For instance, In the housing model I lined up the separation in the middle of the USB port, so the housing can be closed easily. 
+Sometimes the seperation of the housing does not line up with the separation in the screw hole model. For instance, In the housing model I lined up the separation in the middle of the USB port, so the housing can be closed easily. 
 
 To solve this, we can make a local pillar in the bottom housing and a hole in the top housing.
 
@@ -431,9 +446,261 @@ The changes will now automatically come through in both housing parts:
   <img src="./images/08-self-tapping-screws/housing-completed.png" alt="Housing completed" width="400">
 </p>
 
-This is a good example to demonstrate that some changes need modifications in the housing part, while others require changes in the separation parts.
+This is a good example to demonstrate why some changes need modifications in the housing part, while others require changes in the separation parts.
 
 # Creating a complex hinge
 
-# Creating references to external parts
+The next project is a housing with a hinge. It can for instance be used for pencils or glasses. There is a magnet in each shell to keep the housing closed. An advantage of 3D printing is that we can pause printing at a designated layer to insert the magnets manually. When completed, the magnets are fully enveloped by the printed part.
+
+This is the front view of the case when it is closed:
+
+<p align="center">
+  <img src="./images/09-hinge/front-view-closed.png" alt="Housing completed" width="500">
+</p>
+
+This is the front view of the case when it is open:
+
+<p align="center">
+  <img src="./images/09-hinge/front-view-open.png" alt="Housing completed" width="500">
+</p>
+
+The details of the hinge are quite complex:
+
+<p align="center">
+  <img src="./images/09-hinge/rear-view-with-hinge.svg" alt="Housing completed" width="500">
+</p>
+
+The flat edges in the rear view are needed to avoid mechanical interference when the case is fully open, and they act as an end stop.
+
+This is a cross section through the middle of the casing when it is closed:
+
+<p align="center">
+  <img src="./images/09-hinge/cross-section-closed.png" alt="Housing completed" height="200">
+</p>
+
+This is a cross section through the middle of the casing when it is open:
+
+<p align="center">
+  <img src="./images/09-hinge/cross-section-open.png" alt="Housing completed" height="200">
+</p>
+
+The orientation of the parts during printing is the same as when the case is open. To bridge the openings of the magnets well, the top of the magnet opening needs to be horizontal during printing. This is why the magnet opening is not rectangular.
+
+Four sketches define the general shape of the housing, for the top view and the right view, and for the internal and the external shape:
+
+<p align="center">
+  <img src="./images/09-hinge/sketches-housing.png" alt="Housing completed" width="500">
+</p>
+
+Two sketches define the hinge:
+
+<p align="center">
+  <img src="./images/09-hinge/sketches-hinge.png" alt="Housing completed" width="500">
+</p>
+
+For the design of a 3D printed hinge it is important to take into account the accuracy of printing. There needs to be a slit of about 0.3 mm between the parts in all directions.
+
+**sk hinge right** defines the right view of the hinge. The smallest circle represents the hole for the hinge pin. The circle around that represents the cilindrical shape of the hinge. The outermost circle is a reference for the play between both parts of the housing.
+
+<p align="center">
+  <img src="./images/09-hinge/sketch-hinge-right.svg" alt="Housing completed" height="300">
+</p>
+
+The line going down is perpendicular to the bottom flat side of the housing. This line is a reference for the flat face mentioned above.
+
+There is also geometry representing the round parts of the hinge.
+
+**sk hinge top** basically divides the length of the hinge in three parts:
+* elements that are connected to the bottom part of the housing
+* elements that are connected to the top part of the housing
+* space between the parts (S)
+
+The sketch contains only two dimensions: the total length of the hinge and the space between the parts. The radius of the cilinders is also modelled, but this has been derived from **sk hinge right**
+
+<p align="center">
+  <img src="./images/09-hinge/sketch-hinge-top.svg" alt="Housing completed" height="300">
+</p>
+
+The housing is modelled in two different bodies: **Housing external** represents the outside of the housing, **Housing internal** represents the cavity inside. The final housing is obtained by boolean subtraction in the part workbench.
+
+## Housing external
+
+The relevant sketches from the skeleton are imported as shape binders. The bottom and top datum plane are defined as 'normal to edge', referencing the Z-axis and the bottom  and top most points. The contour **he base** is modelled on **he pln bottom** and extruded until **he pln top**.
+
+<p align="center">
+  <img src="./images/09-hinge/housing-external-1.svg" alt="Housing completed" width="500">
+</p>
+
+**he chop off top** chops off the oblique surfaces of **HE Base**.
+
+<p align="center">
+  <img src="./images/09-hinge/housing-external-2.png" alt="Housing completed" width="500">
+</p>
+
+A curve along the outside is made with a subtractive pipe using **he trim outside** along **he base**:
+
+<p align="center">
+  <img src="./images/09-hinge/housing-external-3.png" alt="Housing completed" width="500">
+</p>
+
+Chamfers are added, **he ref hinge right** is imported and the flat edges for the end stop when opening the case are created:
+
+<p align="center">
+  <img src="./images/09-hinge/housing-external-4.png" alt="Housing completed" width="500">
+</p>
+
+**he ref hinge top** is imported as shape binder, and the beginning- and end datum planes for the hinge are created. They exclude the space next to the hinge:
+
+<p align="center">
+  <img src="./images/09-hinge/housing-external-5.png" alt="Housing completed" width="500">
+</p>
+
+The cross section of the hinge **he hinge** is created on **he pln hinge left**, referring to **he ref hinge right** for the shape:
+
+<p align="center">
+  <img src="./images/09-hinge/housing-external-6.png" alt="Housing completed" width="250">
+</p>
+
+**he hinge** is extruded from **he pln hinge left** to **he pln hinge right**, forming HE Hinge:
+
+<p align="center">
+  <img src="./images/09-hinge/housing-external-7.png" alt="Housing completed" width="700">
+</p>
+
+As a final step for the hinge, the hole through the hinge is created:
+
+<p align="center">
+  <img src="./images/09-hinge/housing-external-8.png" alt="Housing completed" width="200">
+</p>
+
+Both sketches determining the magnet pockets are imported, two planes defining the beginning and end of the magnet pockets are created, the lower magnet pocket is created, and the upper magnet pocket is mirrored from the bottom one:
+
+<p align="center">
+  <img src="./images/09-hinge/housing-external-9.png" alt="Housing completed" width="600">
+</p>
+
+## Housing internal
+
+The first steps of the Housing internal body are basically the same, but now referring to **sk housing internal top** and **sk housing internal right** instead of **sk housing external top** and **sk housing external right**:
+
+<p align="center">
+  <img src="./images/09-hinge/housing-internal-1.png" alt="Housing completed" width="600">
+</p>
+
+**hi ref magnet cavity top** is imported as shape binder. A rounded rectangle is sketched with a wall thickness around this shape in **hi room for magnets**. This is extruded from the shape in both directions as **HI Room for magnets**:
+
+<p align="center">
+  <img src="./images/09-hinge/housing-internal-2.png" alt="Housing completed" width="600">
+</p>
+
+Finally, a fillet is added to the magnet bump:
+
+<p align="center">
+  <img src="./images/09-hinge/housing-internal-3.png" alt="Housing completed" width="600">
+</p>
+
+## Housing
+
+The housing is created by boolean subtraction of **Housing external** and **Housing internal** in the Part workbench:
+
+<p align="center">
+  <img src="./images/09-hinge/housing.png" alt="Housing completed" width="600">
+</p>
+
+## Separation bottom
+
+The **Separation bottom** body starts with importing **sb ref housing external top** and **sb ref housing external right**, and then construction only **sb pln bottom**. A rectangle is drawn in a plane 0.1 mm below the XY plane, to ensure there is 0.2 mm space between both shells when the housing is closed. The rectangle is 3 mm larger than the outer shape.
+
+<p align="center">
+  <img src="./images/09-hinge/separation-bottom-1.png" alt="Housing completed" width="600">
+</p>
+
+**sb ref hinge right** and **sb ref hinge top** are imported as shape binders. A positive revolve **SB Hinge positive volume** is added to the shape. The sketch **sb hinge positive volume** is a direct trace from **sb ref hinge top**.
+
+<p align="center">
+  <img src="./images/09-hinge/separation-bottom-2.png" alt="Housing completed" width="600">
+</p>
+
+<p align="center">
+  <img src="./images/09-hinge/separation-bottom-3.png" alt="Housing completed" width="600">
+</p>
+
+Next we will create the slot for protrustion 2 from the top housing.
+
+<p align="center">
+  <img src="./images/09-hinge/separation-bottom-4.svg" alt="Housing completed" width="600">
+</p>
+
+Two datum planes are created, **sb pln hinge slot 2 begin** and **sb pln hinge slot 2 end**, which will be used for the second slot. They will include the space next to the slot.
+
+<p align="center">
+  <img src="./images/09-hinge/separation-bottom-5.png" alt="Housing completed" width="600">
+</p>
+
+Sketch **sb hinge slot** on datum plane **sb pln hinge slot 2 begin** has a line that is parallel to the line in **sb ref hinge right**. This allows the top housing to be opened 180°, which is more than needed, ensuring sufficient space between both parts. The larger circle in **sb ref hinge right** is used, also to create space in radial direction.
+
+<p align="center">
+  <img src="./images/09-hinge/separation-bottom-6.svg" alt="Housing completed" width="600">
+</p>
+
+**SB Hinge slot 2** is extruded until **sb pln hinge slot 2 end**:
+
+<p align="center">
+  <img src="./images/09-hinge/separation-bottom-7.png" alt="Housing completed" width="600">
+</p>
+
+**SB Hinge slot 4** is created by mirroring **SB Hinge slot 2** over the YZ plane.
+
+<p align="center">
+  <img src="./images/09-hinge/separation-bottom-8.png" alt="Housing completed" width="600">
+</p>
+
+## Housing bottom
+
+**Housing bottom** is a boolean intersection of **Housing** and **Separation bottom**
+
+<p align="center">
+  <img src="./images/09-hinge/housing-bottom.png" alt="Housing completed" width="600">
+</p>
+
+## Separation top
+
+**Separation top** is very similar to **Separation bottom**, only now the slots are in locations 1, 3 and 5. Slots 1 and 3 were created individually, slot 5 is a mirror of slot 1.
+
+<p align="center">
+  <img src="./images/09-hinge/separation-bottom-4.svg" alt="Housing completed" width="600">
+</p>
+
+<p align="center">
+  <img src="./images/09-hinge/separation-top.png" alt="Housing completed" width="650">
+</p>
+
+## Housing top
+
+**Housing top** is a boolean intersection of **Housing** and **Separation top**
+
+<p align="center">
+  <img src="./images/09-hinge/housing-top.png" alt="Housing completed" width="600">
+</p>
+
+
+## Final checks
+
+The dependency graph and check geometry tool that as described earlier reported no errors.
+
+FreeCAD does not have a satisfactory tool to check for mechanical interferences.
+
+An effective alternative is to draw a red colored block at a strategic location, and then do a boolean cut with both housing halves. By changing the location of the red block, different areas of the design can be inspected in detail. It is possible to keep the boolean results, so tests can be repeated later without too much overhead.
+
+<p align="center">
+  <img src="./images/09-hinge/hinge-check.svg" alt="Housing completed" width="600">
+</p>
+
+The printability inspection also looks good:
+
+<p align="center">
+  <img src="./images/09-hinge/printability-test-1.png" alt="Housing completed" width="600">
+</p>
+
+# Referencing external parts
 
