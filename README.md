@@ -14,6 +14,7 @@ To follow this tutorial, you need to be familiar with the part design workbench 
 - [Checking the model](#checking-the-model)
   - [Using the Check geometry tool](#using-the-check-geometry-tool)
   - [Checking links](#checking-links)
+  - [Persistent section cut](#persistent-section-cut)
   - [Checking the result in the slicer](#checking-the-result-in-the-slicer)
 - [Creating references to the internal components of the housing](#creating-references-to-the-internal-components-of-the-housing)
 - [Using self tapping screws to close the housing](#using-self-tapping-screws-to-close-the-housing)
@@ -297,6 +298,14 @@ The graph shows that:
 * Body **Housing top** refers to **Separation top** and **Housing**
 * References made by the **Part workbench** act on bodies, while references made by the **Part design workbench** act on features
 * All arrows between the parts are black, indicating there are no errors in this graph
+
+## Persistent section cut
+
+Using the persistent section cut (View > Persistent section cut), interfaces can be visually inspected in detail:
+
+<p align="center">
+  <img src="./images/06-check-model/persistent-section-cut.png" alt="Result" width="400">
+</p>
 
 ## Checking the result in the slicer
 
@@ -688,9 +697,7 @@ Sketch **sb hinge slot** on datum plane **sb pln hinge slot 2 begin** has a line
 
 The dependency graph and check geometry tool that as described earlier reported no errors.
 
-FreeCAD does not have a satisfactory tool to check for mechanical interferences.
-
-An effective alternative is to draw a red colored block at a strategic location, and then do a boolean cut with both housing halves. By changing the location of the red block, different areas of the design can be inspected in detail. It is possible to keep the boolean results, so tests can be repeated later without too much overhead.
+The persistent section cut also did not reveal problems:
 
 <p align="center">
   <img src="./images/09-hinge/hinge-check.svg" alt="Housing completed" width="600">
