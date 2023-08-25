@@ -7,13 +7,15 @@ To follow this tutorial, you need to be familiar with the part design workbench 
 - [Introduction](#introduction)
 - [Topics in this document](#topics-in-this-document)
 - [Concept of making a housing using boolean operation of bodies](#concept-of-making-a-housing-using-boolean-operation-of-bodies)
-- [Making changes to the housing](#making-changes-to-the-housing)
+- [Modifying the Housing Design](#modifying-the-housing-design)
 - [Maintaining the colors of both housing bodies](#maintaining-the-colors-of-both-housing-bodies)
 - [Applying a naming convention for bodies and features](#applying-a-naming-convention-for-bodies-and-features)
 - [Using a skeleton to drive dimensions of the bodies](#using-a-skeleton-to-drive-dimensions-of-the-bodies)
+  - [Principle](#principle)
+  - [Implementation](#implementation)
 - [Checking the model](#checking-the-model)
   - [Using the Check geometry tool](#using-the-check-geometry-tool)
-  - [Checking links](#checking-links)
+  - [Dependency graph](#dependency-graph)
   - [Persistent section cut](#persistent-section-cut)
   - [Checking the result in the slicer](#checking-the-result-in-the-slicer)
 - [Creating references to the internal components of the housing](#creating-references-to-the-internal-components-of-the-housing)
@@ -32,120 +34,139 @@ To follow this tutorial, you need to be familiar with the part design workbench 
 - [Referencing external parts](#referencing-external-parts)
 
 # Concept of making a housing using boolean operation of bodies
-I this example, we want to create a housing which consists of two shells which can be assembled together:
-1. Create the housing (1) as a single body, without worrying about the separation.
-2. Create a second body (2) separation top, which covers which part of the housing will become the top half of the housing
-3. Create a bottom separation (3) as a third body in the same way
-4. Create the top housing as a boolean operation between the housing and the top separation
-5. Create the bottom housing as a boolean operation between the housing and the bottom separation
 
-![Concept](./images/01-concept/concept.png)
+In this example, we will demonstrate the process of constructing a housing through the application of boolean operations on various bodies. The housing will consist of two shells that can be seamlessly assembled together. Follow these steps:
 
-Create the first body named **Housing** (1). In this example it consists of an additive loft for the outside and a subtractive loft for the internal cavity.
+<p align="left">
+  <img src="./images/01-concept/concept.png" alt="Concept" width="600">
+</p>
 
-<p align="center">
+**1. Housing Creation:**
+
+Begin by forming the **housing body** (1) as a singular body, disregarding any separation concerns for now.
+
+<p align="left">
   <img src="./images/01-concept/housing.png" alt="Housing body" width="650">
 </p>
 
-Then create another body in the same part, and call it **Separation top** (2). In this example, it consists of a pad and an additive pipe to create the rim. Note that the pad is deliberately larger than the housing: since we will create a boolean operation lateron, the exact size does not matter.
+**2. Top Separation:**
 
-<p align="center">
+Generate a second body (2) called **Separation top**. This component envelops the volume of the upper section of the housing.
+
+<p align="left">
   <img src="./images/01-concept/separation-top.png" alt="Separation top" width="650">
 </p>
 
-Also create **Separation bottom** (3) as a separate body.
+**3. Bottom Separation:**
 
-<p align="center">
+Similarly, create another body (3) named **Separation bottom**. This part defines the lower separation boundary.
+
+<p align="left">
   <img src="./images/01-concept/separation-bottom.png" alt="Separation bottom" width="650">
 </p>
 
-Next move to the part workbench. Select **Housing** and **Separation top**, and choose the `Intersection` command from the toolbar.
+**4. Boolean Operations for Top Housing:**
 
-<p align="center">
+Switch to the Part workbench. Select the **Housing** body and the **Separation top** body. Use the `Intersection` command from the toolbar to generate a new body, initially named **Common**, which embodies the boolean intersection of the selected bodies. Rename this new body as **Housing top** (1 & 2).
+
+<p align="left">
   <img src="./images/01-concept/housing-top.png" alt="Housing top" width="650">
 </p>
 
-Thus a new body named **Common** is created, consisting of the boolean intersection of both selected bodies. Rename that body **Housing top** (1 & 2).
+**5. Boolean Operations for Bottom Housing:**
 
-It may seem as if the **Housing** body has disappeared from the model tree, so we can no longer select it to create the bottom housing. However, if we expand the **Housing top** body, we can see that **Housing** is still there since it was used to make up the **Housing top**. Select the **Housing** body and the **Separation bottom** body and apply the `Intersection` command again on those two bodies. The resulting body is named **Common 001**. Rename it to **Housing bottom** (1 & 3).
+Although the **Housing** body may appear to have vanished from the model tree, it still exists within the **Housing top** body, as it contributed to its formation. By expanding the **Housing top** body, you'll find the **Housing** body within. To establish the **Bottom housin**g body, select the **Housing** body along with the **Separation bottom** body. Reapply the `Intersection` command to these chosen bodies, resulting in a new body named **Common 001**. Rename this resultant body as **Housing bottom** (1 & 3).
 
-<p align="center">
+<p align="left">
   <img src="./images/01-concept/housing-bottom.png" alt="Housing top" width="650">
 </p>
 
-After modifying the color and transparency of both housing parts, the result looks like this:
+**6. Finalizing Appearance:**
 
-<p align="center">
+Conclude the process by adjusting the color and transparency attributes of both housing components. 
+
+<p align="left">
   <img src="./images/01-concept/result.png" alt="Result" width="650">
 </p>
 
 
-# Making changes to the housing
+# Modifying the Housing Design
 
-One could argue that the drawback of this method is that we can no longer modify both **Housing top** and **Housing bottom** using the part design workbench. In practice this is not a problem, since we can make those modifications to the three bodies we started with. However, it is important to make a considerate decision about on which body to make the modification. For instance, if the housing is used to support some electronics, and we need a power cable to connect to the electronics inside, we can simply add those features to the original **Housing** body.
+An aspect to consider within this approach is that the ability to directly modify both the **Housing top** and **Housing bottom** components using the part design workbench becomes limited. Nonetheless, in practical scenarios, this limitation is inconsequential as modifications can still be efficiently executed on the three original bodies. However, the decision-making process gains significance concerning which specific body to target for the intended alteration. A prime example underscores this point: when the housing serves to accommodate electronic components and requires integration with a power cable, it proves simpler to incorporate these features into the original **Housing** body.
 
-Ensure that **Housing** is the only visible body, and that it is the active part by doubleclicking it.
+**1. Making Housing the active component**
 
-<p align="center">
+Begin by ensuring that the **Housing** body is exclusively visible and designated as the active component. This entails switching to the Part design workbench and a double-click action on the **Housing** body.
+
+<p align="left">
   <img src="./images/02-making-modifications/selecting-housing.png" alt="Selecting housing" width="650">
 </p>
 
-Next, add a protrusion and a hole to the housing for the power connector.
+**2. Modifying the housing body**
 
-<p align="center">
+With the "Housing" body selected, proceed to introduce necessary changes, such as adding a protrusion and a hole to facilitate the integration of a power connector.
+
+<p align="left">
   <img src="./images/02-making-modifications/modifying-housing.png" alt="Modifying housing" width="650">
 </p>
 
-After making the **Housing** body invisible and the **Housing bottom** and **Housing top** bodies visible, we can see that both bodies were modified:
+**3. Reviewing the result**
 
-<p align="center">
+Following the modification process, by concealing the **Housing** body and making the **Housing bottom** and **Housing top** bodies visible once again, it becomes evident that both these components have undergone alterations as well.
+
+<p align="left">
   <img src="./images/02-making-modifications/result.png" alt="Result" width="650">
 </p>
 
-Please note that this operation has overwritten the colors of the **Housing bottom** and **Housing top** bodies. We can again correct these colors, but this soon becomes annoying and so we apply a simple workaround to avoid that.
+This operation overwrites the original colors assigned to the **Housing bottom** and **Housing top** bodies. While it is indeed possible to rectify these colors once more, the repetitive nature of this task can become cumbersome. To circumvent this, a simple workaround is applied to avoid recurrent color adjustments.
 
 
 # Maintaining the colors of both housing bodies
 
-The simplest workaround is to create a copy of the bodies and apply the desired color to this copy.
+One of the most straightforward solutions to maintain the colors of the bodies involves the creation of duplicates of the bodies in question, followed by the application of the desired color scheme to these replicated entities.
 
-Switch to the **Part workbench** and select the **Housing top** body.
+1. Transition to the Part workbench 
+2. Select the **Housing top** body. 
+3. Choose `Part` > `Create a copy` > `Refine shape` from the menu
+4. Rename the duplicated body as "Housing top refined" 
+5. Adjust both color and transparency of the copied object
 
-<p align="center">
-  <img src="./images/03-maintaining-colors/refine-shape.png" alt="Result" width="650">
-</p>
+Repeat the process for the **Housing bottom** body.
 
-Rename the copied body **Housing top refined** and modify color and transparency. Repeat this for **Housing bottom**.
-
-<p align="center">
+<p align="left">
   <img src="./images/03-maintaining-colors/result.png" alt="Result" width="650">
 </p>
 
-The colors of the refined shapes will remain unchanged if the original bodies are modified.
+It's worth noting that the color alterations applied to the refined duplicates will remain unaffected even when modifications are made to the original bodies.
 
-Another advantage of this workaround is that we can create multiple copies in various positions. This way we can easily inspect the parts in different orientations by making the right combination visible.
+An additional benefit stemming from this workaround is the ability to generate multiple copies, each positioned differently. This grants the convenience of inspecting the components from various angles by selectively rendering specific combinations visible.
 
-<p align="center">
+<p align="left">
   <img src="./images/03-maintaining-colors/different-orientations.png" alt="Result" width="650">
 </p>
 
+
 # Applying a naming convention for bodies and features
 
-If the number of bodies and features in the model tree grows, it becomes increasingly difficult to indentify the right feature if you want to make changes. It becomes helpful to choose unique and meaningful names for features. I have developed my own system which is as follows:
+As the quantity of bodies and features within the model tree expands, the process of identifying the precise feature for necessary modifications becomes progressively complex. To mitigate this challenge, adopting distinct and meaningful names for features proves invaluable. In this context, I have devised a systematic naming approach, outlined as follows:
 
-| Type of feature         | Case          | Code              |
-|-------------------------|---------------|-------------------|
-| Volumetric features     | Sentence case | `Bd Name`         |
-| Non-volumetric features | lowercase     | `bd typ name ext` | 
+| Type of feature         | Case          | Code               |
+|-------------------------|---------------|--------------------|
+| Volumetric features     | Sentence case | `Bb Nnnnn`         |
+| Non-volumetric features | lowercase     | `bb ttt nnnnn eee` | 
 
-Non-volumetric features such as sketches and planes use lower case names. Volumes use Sentence case names (e.g., a sketch may be named **hs base**, and the pad that is created using that sketch is named **HS Base**)
+Non-volumetric features such as sketches and planes employ lowercase for their names. For these instances, a combination of body abbreviation, feature type code, and name extension is employed (bd typ name ext).
 
-| Code   | Meaning                                                                                                              |
-|:------:|----------------------------------------------------------------------------------------------------------------------|
-| `Bd`   | a loose abbreviation of the body (**HS** for housing, **ST** for separation top, **SB** for separation bottom, etc.) |
-| `Typ`  | a 3 letter code for the type of feature after that abreviation: <br> **pln** for a plane <br> **axs** for an axis <br> **ref** for a shape binder |
-| `Name` | The name of the feature |
-| `ext`  | for additive and subtractive pipes: <br> the trajectory of the pipe is followed by **trj** <br> the cross section is followed by **crs** |
+Volumes use Sentence case names (e.g., a sketch may be named **hs base**, and the pad that is created using that sketch is named **HS Base**)
+
+Typically, the last sketch to define a volumetric feature has the same name as the volumetric feature, but they become distinct by the use of different case.
+
+| Code    | Meaning                                                                                                              |
+|---------|----------------------------------------------------------------------------------------------------------------------|
+| `bb`    | A unique abbreviation of the body (**HS** for housing, **ST** for separation top, **SB** for separation bottom, etc.) |
+| `ttt`   | A 3 letter code for the type of feature after that abreviation: <br> - **pln** for a plane <br> - **axs** for an axis <br> - **ref** for a shape binder |
+| `nnnnn` | The name of the feature |
+| `eee`   | For additive and subtractive pipes: <br>  - the trajectory of the pipe is followed by **trj** <br>  - the cross section is followed by **crs** |
 
 Examples:
 
@@ -163,83 +184,113 @@ It is helpful to choose a pragmatic approach: for simple projects, the overhead 
 
 # Using a skeleton to drive dimensions of the bodies
 
-As can be seen in this example, it would be helpful to create links between the different bodies to make the design truly parametric. For instance, the rim is defined in the **Separation top** and **Separation bottom** bodies, but they need to follow the contour that is defined in the **Housing** body. One body can reference another body, but the reference can only be in one direction: once features of a body B are referencing body A, there can no longer be a reference from body A to body B.
+## Principle
 
-One way of keeping this structured is to start with a **Skeleton** body which only holds some basic shapes and dimensions, but that does not represent any volumes. This **Skeleton** body is then referenced by the other bodies.
+To make the design truly parametric, it is helpful to create links between the different bodies. For instance, the rim is defined in the **Separation top** and **Separation bottom** bodies, but they need to follow the contour that is defined in the **Housing** body. It's crucial to note that the referencing between bodies is one-way; once Body B's features reference Body A, a reciprocal reference from A to B is no longer possible to prevent circular references.
 
-Another advantage of a skeleton body is that it makes the model more robust. If sketches refer to 3D geometry, such as edges of the body, the model quickly becomes unstable since names of those edges are changed when making small changes (the notorious [Topological Naming Problem](https://wiki.freecad.org/Topological_naming_problem) ). When referring to edges in sketches instead, it is less likely that names of those edges are changed. This is especially true if we keep these sketches small and simple. It is therefore better to create a large number of simple sketches instead of a few complex ones.
+To maintain a structured approach, an effective strategy is to initiate with a **Skeleton** body. This specialized body encapsulates fundamental shapes and dimensions, devoid of volumetric representations. Consequently, this **Skeleton** body serves as a reference for other bodies.
 
+Additionally, a **Skeleton** body enhances model robustness. In cases where sketches reference 3D geometry, such as body edges or faces, making minor alterations can trigger instability due to the notorious [Topological Naming Problem](https://wiki.freecad.org/Topological_naming_problem). To circumvent this, sketches should refer to sketches, rendering them less prone to naming changes. Simple, smaller sketches are preferable over complex ones.
 
-When we use tools such as a pad or a pocket to extrude geometry, the geometry is partially driven by a sketch, but partially by the number that defines how long the extrusion is. In order to make the design fully driven by a sketch, we choose another approach.
+When we use tools such as a pad or a pocket to extrude geometry, the geometry is partially driven by a sketch, but also by the number that defines how long the extrusion is. In order to make the design fully driven by sketches from the **Skeleton** part, we choose another approach.
 
-We first create two datum planes: one at the beginning of the extrude and one at the end. The sketch sits on the first plane, the extrude is done to the next datum plane. These datum planes are defined by features from the skeleton. 
+Here's how it works:
 
-To define the planes, we use an edge and a point, and we define the datum plane 'normal to edge'.
+1. Create a sketch in the **Skeleton** part, which contains an edge with an endpoint in the plane where the extrude begins and another where the extrude stops. Also create a sketch which can be referred to for the shape.
 
 <p align="center">
-  <img src="./images/05-skeleton-body/datum-plane-to-drive-the-model.svg" alt="Datum plane" width="350">
+  <img src="./images/05-skeleton-body/sketches-in-skeleton.png" alt="Datum plane" width="450">
 </p>
 
-The 'front side' of the datum plane, on which a sketch is created, is sometimes counter intuitive, so it seems as if you need to draw a mirrorred sketch. To solve this, set the 'Map reversed' property of the datum plane to 'True'. It is best to do this early on in the process, since it often corrupts the sketch.
+2. Create a body named **Housing**
+3. Create a copy of the sketches we need using a Shape Binder
 
+<p align="center">
+  <img src="./images/05-skeleton-body/shape-binders.png" alt="Datum plane" width="450">
+</p>
 
-In this example, the **Skeleton** body contains a number of sketches:
-* **sk front**: the front view of the housing 
+4. Create two datum planes: one at the beginning of the extrude and one at the end. To define the planes, we use an edge and a point, and we define the datum plane 'normal to edge'.
+
+<p align="center">
+  <img src="./images/05-skeleton-body/define-first-datumplane.png" alt="Datum plane" width="650">
+</p>
+
+5. Ensure that the **Skeleton** body is made invisible, to avoid referring to sketches in this body. 
+6. Create a sketch on the first plane. The geometry in the sketch can refer to another sketch that is derived from the **Skeleton** part using a Shape binder
+
+<p align="center">
+  <img src="./images/05-skeleton-body/drawing-base-sketch.png" alt="Datum plane" width="500">
+</p>
+
+**Note:** The 'front side' of the datum plane, on which a sketch is created, is sometimes counter intuitive, so it seems as if you need to draw a mirrorred sketch. To solve this, set the 'Map reversed' property of the datum plane to 'True'. It is best to do this early on in the process, since it often corrupts the sketch.
+
+7. Extrude the up until the other datum plane. When using the 'select face' button, the plane can also be selected in the model tree.
+
+<p align="center">
+  <img src="./images/05-skeleton-body/extrude-up-to-the-next-plane.png" alt="Datum plane" width="650">
+</p>
+
+## Implementation
+
+Next, we take some bigger steps to complete the housing. We add a number of sketches to the **Skeleton** body:
 * **sk separation**: the separation lines for both the top and the bottom separations
-* **sk top**: the top view of the housing
+* **sk internal front**: the front view of the cavity inside housing
+* **sk internal top**: the top view of the cavity inside housing
 * **sk rim trj**: the trajectory that the rim and the groove must follow
 * **sk rim crs**: the cross sections of both the rim and the groove
 
-Besides, it also contains a helper plane at the bottom of the separation that is used for the trajectory of the rim. The sketches also refer to each other: for instance, the length of the housing is both defined in **sk front** and in **sk bottom**. Therefore, **sk bottom** refers to **sk front** to obtain the length so the length is defined only once.
-
 <p align="center">
-  <img src="./images/05-skeleton-body/skeleton.png" alt="Result" width="650">
+  <img src="./images/05-skeleton-body/adding-sketches-to-skeleton.png" alt="Result" width="650">
 </p>
 
-For instance, **sk front** looks like this:
+Note that a sketch can make references to sketches in other planes. For instance, the right edge of **sk rim trj** references a line in the **sk separation** sketch:
 
 <p align="center">
-  <img src="./images/05-skeleton-body/sk-front.png" alt="sk front" width="500">
+  <img src="./images/05-skeleton-body/sk-rim-trj.png" alt="Result" width="350">
 </p>
 
-In **sk top**, the width of the outer body and the width of the cavity are defined, but all other dimensions are derived from the **sk front** sketch or the **sk separation** sketch:
+To make such references, switch to ISO view:
 
 <p align="center">
-  <img src="./images/05-skeleton-body/sk-top.png" alt="sk front" width="500">
+  <img src="./images/05-skeleton-body/referencing-in-iso-view.png" alt="Result" width="500">
 </p>
 
-
-Now create a second body with the name **Housing**. It is not possible to create links to sketches in other bodies like we are used to. We first need to create a *Shape binder*:
-1. Ensure that **Housing** is the active body
-2. Select the **sk front** sketch in the **Skeleton** body
-3. Use the `Create a sub-object(s) shape binder`-button on the toolbar to create a shape binder
-4. Rename the shape binder **hs ref front**
-5. Repeat these steps for **sk top**
-
-Use elements from **hs ref top** to define four datum planes, from left to right:
-1. **hs pln outside left**, that will be used for the sketch of the outer shape
-2. **hs pln inside left**, for the shape of the cavity
-3. **hs pln inside right** that is used as an end plane for the inner cavity
-4. **hs pln outside right** that is used as an end plane for the housing
+The finish the **Housing** body:
 
 <p align="center">
-  <img src="./images/05-skeleton-body/four-datum-planes.png" alt="Result" width="450">
+  <img src="./images/05-skeleton-body/housing-completed.png" alt="Result" width="500">
 </p>
 
-Use the **hs pln left outside** plane to draw **hs base** that defines the left side of the housing. **hs base** retrieves the shape from **hs ref front**.
+Note that chamfers and fillets were added, but they are just defined in the **Housing** body, without references to the **Skeleton** body.
 
-Use **hs pln left inside** to draw the **hs cavity** sketch. This is extruded as **HS Cavity** until **hs pln inside right** to create **HS Cavity**
+The **Separation bottom** body also has a few necessary shape binders referencing the **Skeleton** body:
 
 <p align="center">
-  <img src="./images/05-skeleton-body/side-sketches.png" alt="Result" width="600">
+  <img src="./images/05-skeleton-body/separation-bottom-shape-binders.png" alt="Result" width="500">
 </p>
 
-**hs base** is extruded until **hs pln outside right** to form **HS Base**.
-Chamfers and fillets are added to the outside of the housing.
-**hs cavity** is extruded until **hs pln inside right** to create **HS Cavity**,
+This is wat **Separation bottom** looks like when it is completed:
 
 <p align="center">
-  <img src="./images/05-skeleton-body/housing.png" alt="Result" width="600">
+  <img src="./images/05-skeleton-body/separation-bottom-completed.png" alt="Result" width="500">
+</p>
+
+**Separation top** is very similar:
+
+<p align="center">
+  <img src="./images/05-skeleton-body/separation-top-completed.png" alt="Result" width="500">
+</p>
+
+The final result looks like this:
+
+<p align="center">
+  <img src="./images/05-skeleton-body/final-result-original-closed.png" alt="Result" width="500">
+</p>
+
+And with the top off:
+
+<p align="center">
+  <img src="./images/05-skeleton-body/final-result-original.png" alt="Result" width="500">
 </p>
 
 Note that:
@@ -247,34 +298,14 @@ Note that:
 * not all sketches from the **Skeleton** body have been imported, e.g. the rim is not needed in the **Housing** body 
 * details which are independent from other bodies (such as the chamfer), were only defined in the **Housing** body
 
-The **Separation bottom** body is created in a similar way:
+The proof of the pudding is in the eating. We change a few dimensions in the **Skeleton** body to see if the model is indeed parametric. The result is as expected:
 
 <p align="center">
-  <img src="./images/05-skeleton-body/separation-bottom.png" alt="Result" width="600">
+  <img src="./images/05-skeleton-body/result-after-changes.png" alt="Result" width="500">
 </p>
 
-As goes for **Separation top**:
-
 <p align="center">
-  <img src="./images/05-skeleton-body/separation-top.png" alt="Result" width="600">
-</p>
-
-With boolean operations and refined shapes, both halves look like:
-
-<p align="center">
-  <img src="./images/05-skeleton-body/housing-separated.png" alt="Result" width="600">
-</p>
-
-The proof of the pudding is in the eating. We change a few dimensions in the **sk front** sketch in the **Skeleton** body to see if the model is indeed parametric:
-
-<p align="center">
-  <img src="./images/05-skeleton-body/sk-front-after-change.png" alt="Result" width="500">
-</p>
-
-The result is as expected:
-
-<p align="center">
-  <img src="./images/05-skeleton-body/result-of-change.png" alt="Result" width="600">
+  <img src="./images/05-skeleton-body/result-after-changes-open.png" alt="Result" width="500">
 </p>
 
 # Checking the model
@@ -283,7 +314,7 @@ The result is as expected:
 
 The Check geometry tool from the part workbench can be used to check if the 3D model is valid (Part workbench > Part > Check geometry ![Dependency graph](./images/06-check-model/check-geometry-button-small.png)). It is beyond the scope of this tutorial to explain how to solve common problems. MangoJelly has an [excellent video](https://www.youtube.com/watch?v=bw1Y5mrHrWY) on this tool. If causes are hard to find, the FreeCAD community is also willing to help out.
 
-## Checking links
+## Dependency graph
 
 It can sometimes (although rarely) occur that links between bodies cause errors that are very hard to find. Sometimes the problem is that there are crosslinks between bodies, i.e. body A refers to body B and body B refers back to body A. This circular reference causes FreeCAD to stop automatic recalculation of the part.
 
@@ -291,13 +322,13 @@ The dependency graph (menu Tools > Dependency Graph) can be very helpful to spot
 
 The dependency graph of the housing looks like this (text balloons were added manually to improve readability):
 
-![Dependency graph](./images/06-check-model/dependency-graph.svg)
+![Dependency graph](./images/06-check-model/dependency-graph.png)
 
 The graph shows that:
 * All bodies directly or indirectly refer to the **Skeleton** body 
 * Body **Housing top** refers to **Separation top** and **Housing**
 * References made by the **Part workbench** act on bodies, while references made by the **Part design workbench** act on features
-* All arrows between the parts are black, indicating there are no errors in this graph
+* None of the arrows are red, indicating there are no errors in this graph
 
 ## Persistent section cut
 
@@ -318,7 +349,7 @@ Things to specifically pay attention to:
 - is it possible to reduce print time by making other design choices?
 
 <p align="center">
-  <img src="./images/06-check-model/slicing.png" alt="Result" width="500">
+  <img src="./images/06-check-model/slicing.png" alt="Result" width="650">
 </p>
 
 As can be seen in this screenshot, both the top of the rim and the sides of the the groove are printale with multiple adjacent tracks. The dark blue lines indicate that the protrusion around the power connector is partially unsupported, but since these areas are very small, we will probably be fine.
@@ -373,12 +404,16 @@ I often use self tapping screws for such housings. With the right tolerances, th
 In order to make the screw holes parametric, I created a model of the screw which contains an additional sketch representing the hole in the housing.
 
 <p align="center">
-  <img src="./images/08-self-tapping-screws/additional-sketch.svg" alt="Screws" width="600">
+  <img src="./images/08-self-tapping-screws/additional-sketch.png" alt="Screws" width="600">
 </p>
 
-![Warning](./images/08-self-tapping-screws/warning.svg)
+<p align="left">
+  <img src="./images/08-self-tapping-screws/warning.png" alt="Screws" height="35">
+</p>
 
-![Warning](./images/08-self-tapping-screws/warning2.svg)
+<p align="left">
+  <img src="./images/08-self-tapping-screws/warning2.png" alt="Screws" height="35">
+</p>
 
 ## Creating a screw hole
 This is how it works:
@@ -418,7 +453,7 @@ To solve this, we can make a local pillar in the bottom housing and a hole in th
 4. Create a sketch **sk screw pillar 1** that represents both the pillar in the **Bottom housing** and the hole in the **Top housing**. The top of the pillar must align with the separation plane in the screw hole, the bottom of the pillar is aligned with the lower line of the separation. Ensure the centerline of the pillar/hole is also a geometry line. We want to refer to it lateron.
 
 <p align="center">
-  <img src="./images/08-self-tapping-screws/alignment-of-pillar-height.svg" alt="Screws" width="650">
+  <img src="./images/08-self-tapping-screws/alignment-of-pillar-height.png" alt="Screws" width="650">
 </p>
 
 5. Make **Separation bottom** the active body
@@ -476,7 +511,7 @@ This is the front view of the case when it is open:
 The details of the hinge are quite complex:
 
 <p align="center">
-  <img src="./images/09-hinge/rear-view-with-hinge.svg" alt="Housing completed" width="500">
+  <img src="./images/09-hinge/rear-view-with-hinge.png" alt="Housing completed" width="500">
 </p>
 
 The flat edges in the rear view are needed to avoid mechanical interference when the case is fully open, and they act as an end stop.
@@ -512,7 +547,7 @@ For the design of a 3D printed hinge it is important to take into account the ac
 **sk hinge right** defines the right view of the hinge. The smallest circle represents the hole for the hinge pin. The circle around that represents the cilindrical shape of the hinge. The outermost circle is a reference for the play between both parts of the housing.
 
 <p align="center">
-  <img src="./images/09-hinge/sketch-hinge-right.svg" alt="Housing completed" height="300">
+  <img src="./images/09-hinge/sketch-hinge-right.png" alt="Housing completed" height="300">
 </p>
 
 The line going down is perpendicular to the bottom flat side of the housing. This line is a reference for the flat face mentioned above.
@@ -527,7 +562,7 @@ There is also geometry representing the round parts of the hinge.
 The sketch contains only two dimensions: the total length of the hinge and the space between the parts. The radius of the cilinders is also modelled, but this has been derived from **sk hinge right**
 
 <p align="center">
-  <img src="./images/09-hinge/sketch-hinge-top.svg" alt="Housing completed" height="300">
+  <img src="./images/09-hinge/sketch-hinge-top.png" alt="Housing completed" height="300">
 </p>
 
 The housing is modelled in two different bodies: **Housing external** represents the outside of the housing, **Housing internal** represents the cavity inside. The final housing is obtained by boolean subtraction in the part workbench.
@@ -537,7 +572,7 @@ The housing is modelled in two different bodies: **Housing external** represents
 The relevant sketches from the skeleton are imported as shape binders. The bottom and top datum plane are defined as 'normal to edge', referencing the Z-axis and the bottom  and top most points. The contour **he base** is modelled on **he pln bottom** and extruded until **he pln top**.
 
 <p align="center">
-  <img src="./images/09-hinge/housing-external-1.svg" alt="Housing completed" width="500">
+  <img src="./images/09-hinge/housing-external-1.png" alt="Housing completed" width="500">
 </p>
 
 **he chop off top** chops off the oblique surfaces of **HE Base**.
@@ -549,7 +584,7 @@ The relevant sketches from the skeleton are imported as shape binders. The botto
 A curve along the outside is made with a subtractive pipe using **he trim outside** along **he base**:
 
 <p align="center">
-  <img src="./images/09-hinge/housing-external-3.png" alt="Housing completed" width="500">
+  <img src="./images/09-hinge/housing-external-3.png" alt="Housing completed" width="650">
 </p>
 
 Chamfers are added, **he ref hinge right** is imported and the flat edges for the end stop when opening the case are created:
@@ -637,7 +672,7 @@ The **Separation bottom** body starts with importing **sb ref housing external t
 Next we will create the slot for protrustion 2 from the top housing.
 
 <p align="center">
-  <img src="./images/09-hinge/separation-bottom-4.svg" alt="Housing completed" width="600">
+  <img src="./images/09-hinge/separation-bottom-4.png" alt="Housing completed" width="600">
 </p>
 
 Two datum planes are created, **sb pln hinge slot 2 begin** and **sb pln hinge slot 2 end**, which will be used for the second slot. They will include the space next to the slot.
@@ -649,7 +684,7 @@ Two datum planes are created, **sb pln hinge slot 2 begin** and **sb pln hinge s
 Sketch **sb hinge slot** on datum plane **sb pln hinge slot 2 begin** has a line that is parallel to the line in **sb ref hinge right**. This allows the top housing to be opened 180°, which is more than needed, ensuring sufficient space between both parts. The larger circle in **sb ref hinge right** is used, also to create space in radial direction.
 
 <p align="center">
-  <img src="./images/09-hinge/separation-bottom-6.svg" alt="Housing completed" width="600">
+  <img src="./images/09-hinge/separation-bottom-6.png" alt="Housing completed" width="600">
 </p>
 
 **SB Hinge slot 2** is extruded until **sb pln hinge slot 2 end**:
@@ -677,7 +712,7 @@ Sketch **sb hinge slot** on datum plane **sb pln hinge slot 2 begin** has a line
 **Separation top** is very similar to **Separation bottom**, only now the slots are in locations 1, 3 and 5. Slots 1 and 3 were created individually, slot 5 is a mirror of slot 1.
 
 <p align="center">
-  <img src="./images/09-hinge/separation-bottom-4.svg" alt="Housing completed" width="600">
+  <img src="./images/09-hinge/separation-bottom-4.png" alt="Housing completed" width="600">
 </p>
 
 <p align="center">
@@ -700,7 +735,7 @@ The dependency graph and check geometry tool that as described earlier reported 
 The persistent section cut also did not reveal problems:
 
 <p align="center">
-  <img src="./images/09-hinge/hinge-check.svg" alt="Housing completed" width="600">
+  <img src="./images/09-hinge/hinge-check.png" alt="Housing completed" width="600">
 </p>
 
 The printability inspection also looks good:
