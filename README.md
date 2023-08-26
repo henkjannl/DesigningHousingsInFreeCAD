@@ -70,7 +70,7 @@ Similarly, create another body (3) named **Separation bottom**. This part define
 Switch to the Part workbench. Select the **Housing** body and the **Separation top** body. Use the `Intersection` command from the toolbar to generate a new body, initially named **Common**, which embodies the boolean intersection of the selected bodies. Rename this new body as **Housing top** (1 & 2).
 
 <p align="left">
-  <img src="./images/01-concept/housing-top.png" alt="Housing top" width="800">
+  <img src="./images/01-concept/housing-top.png" alt="Housing top" width="796">
 </p>
 
 **5. Boolean Operations for Bottom Housing:**
@@ -92,11 +92,11 @@ Conclude the process by adjusting the color and transparency attributes of both 
 
 # Modifying the Housing Design
 
-An aspect to consider within this approach is that the ability to directly modify both the **Housing top** and **Housing bottom** components using the part design workbench becomes limited. Nonetheless, in practical scenarios, this limitation is inconsequential as modifications can still be efficiently executed on the three original bodies. However, the decision-making process gains significance concerning which specific body to target for the intended alteration. A prime example underscores this point: when the housing serves to accommodate electronic components and requires integration with a power cable, it proves simpler to incorporate these features into the original **Housing** body.
+An aspect to consider within this approach is that it is no longer possible to make changes to **Housing top** and **Housing bottom** using the part design workbench. Nonetheless, modifications can still be efficiently executed on the three original bodies. However, the decision-making process gains significance concerning which specific body to target for the intended alteration. This will be demonstrated in the next example, where we will add a feature to accomodate a power cable to the **Housing** body.
 
 **1. Making Housing the active component**
 
-Begin by ensuring that the **Housing** body is exclusively visible and designated as the active component. This entails switching to the Part design workbench and a double-click action on the **Housing** body.
+Begin by ensuring that **Housing** is the only visible body and ensure it is the active component by double-clicking it in the Part design workbench.
 
 <p align="left">
   <img src="./images/02-making-modifications/selecting-housing.png" alt="Selecting housing" width="632">
@@ -104,7 +104,7 @@ Begin by ensuring that the **Housing** body is exclusively visible and designate
 
 **2. Modifying the housing body**
 
-With the "Housing" body selected, proceed to introduce necessary changes, such as adding a protrusion and a hole to facilitate the integration of a power connector.
+With the **Housing** body selected, proceed to introduce necessary changes, such as adding a protrusion and a hole to facilitate the integration of a power connector.
 
 <p align="left">
   <img src="./images/02-making-modifications/modifying-housing.png" alt="Modifying housing" width="704">
@@ -118,16 +118,16 @@ Following the modification process, by concealing the **Housing** body and makin
   <img src="./images/02-making-modifications/result.png" alt="Result" width="731">
 </p>
 
-This operation overwrites the original colors assigned to the **Housing bottom** and **Housing top** bodies. While it is indeed possible to rectify these colors once more, the repetitive nature of this task can become cumbersome. To circumvent this, a simple workaround is applied to avoid recurrent color adjustments.
+This operation overwrites the original colors assigned to the **Housing bottom** and **Housing top** bodies. While it is of course possible to rectify these colors once more, the repetitive nature of this task soon becomes annoying. To circumvent this, a simple workaround is proposed.
 
 
 # Maintaining the colors of both housing bodies
 
-One of the most straightforward solutions to maintain the colors of the bodies involves the creation of duplicates of the bodies in question, followed by the application of the desired color scheme to these replicated entities.
+One of the simplest solutions to maintain the colors of the bodies involves the creation of duplicates of the bodies in question, followed by the application of the desired color to the replicated bodies.
 
 1. Transition to the Part workbench 
 2. Select the **Housing top** body. 
-3. Choose `Part` > `Create a copy` > `Refine shape` from the menu
+3. Choose <kbd>Part</kbd> > <kbd>Create a copy</kbd> > <kbd>Refine shape</kbd> from the menu
 4. Rename the duplicated body as "Housing top refined" 
 5. Adjust both color and transparency of the copied object
 
