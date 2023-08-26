@@ -1,7 +1,22 @@
 # Introduction
-This tutorial demonstrates how to design 3D printable housings in FreeCAD. The advantage of this approach is that it is quite structured, and you can manage changes in the design quite well, even if the design gets complex.
+This tutorial demonstrates how to design 3D printable housings in FreeCAD. The advantage of the proposed approach is that it is quite structured, and you can manage changes in the design well, even if the design gets complex.
 
 To follow this tutorial, you need to be familiar with the part design workbench and the sketcher. I’ll try to just focus on a high conceptual level.
+
+The concept can be used for simple designs, but also for more advanced projects such as a housing with a complex hinge:
+
+<p align="center">
+  <img src="./09-hinge/intro.png" alt="Introduction" width="450">
+</p>
+
+<p align="center">
+  <img src="./09-hinge/intro-2.png" alt="Intro 2" width="450">
+</p>
+
+My first thought was to create a Youtube tutorial, but I decided would be too long to follow, and a document allows the reader to speed up easily if the idea is clear. A disadvantage of a document is that I will not learn how many views I have received. Please respond in the Issues section of Github if you appreciate this tutorial or if you have ideas for improvement.
+
+HenkJan van der Pol
+
 
 # Topics in this document
 - [Introduction](#introduction)
@@ -16,6 +31,7 @@ To follow this tutorial, you need to be familiar with the part design workbench 
 - [Checking the model](#checking-the-model)
   - [Using the Check geometry tool](#using-the-check-geometry-tool)
   - [Dependency graph](#dependency-graph)
+  - [Interference check](#interference-check)
   - [Persistent section cut](#persistent-section-cut)
   - [Checking the result in the slicer](#checking-the-result-in-the-slicer)
 - [Creating references to the internal components of the housing](#creating-references-to-the-internal-components-of-the-housing)
@@ -35,7 +51,7 @@ To follow this tutorial, you need to be familiar with the part design workbench 
 
 # Concept of making a housing using boolean operation of bodies
 
-In this example, we will demonstrate the process of constructing a housing through the application of boolean operations on various bodies. The housing will consist of two shells that can be seamlessly assembled together. Follow these steps:
+This example demonstrates the concept of constructing a housing through the application of boolean operations on various bodies. The housing will consist of two shells that can be seamlessly assembled together. Follow these steps:
 
 <p align="left">
   <img src="./01-concept/concept.png" alt="Concept" width="1135">
@@ -51,7 +67,7 @@ Begin by forming the **housing body** (1) as a singular body, disregarding any s
 
 **2. Top Separation:**
 
-Generate a second body (2) called **Separation top**. This component envelops the volume of the upper section of the housing.
+Generate a second body (2) called **Separation top**. This component envelops the volume of the upper section of the housing. In this example, the **Separation top** simply consists of a block and an extruded pipe:
 
 <p align="left">
   <img src="./01-concept/separation-top.png" alt="Separation top" width="672">
@@ -67,7 +83,11 @@ Similarly, create another body (3) named **Separation bottom**. This part define
 
 **4. Boolean Operations for Top Housing:**
 
-Switch to the Part workbench. Select the **Housing** body and the **Separation top** body. Use the <kbd>Intersection</kbd> command from the toolbar to generate a new body, initially named **Common**, which embodies the boolean intersection of the selected bodies. Rename this new body as **Housing top** (1 & 2).
+* Switch to the Part workbench
+* Select the **Housing** body and the **Separation top** body. 
+* Use the <kbd>Intersection</kbd> command from the toolbar to generate a new body, initially named **Common**, which embodies the boolean intersection of the selected bodies. 
+* Rename this new body as **Housing top** (1 & 2).
+
 
 <p align="left">
   <img src="./01-concept/housing-top.png" alt="Housing top" width="796">
@@ -92,7 +112,7 @@ Conclude the process by adjusting the color and transparency attributes of both 
 
 # Modifying the Housing Design
 
-An aspect to consider within this approach is that it is no longer possible to make changes to **Housing top** and **Housing bottom** using the part design workbench. Nonetheless, modifications can still be efficiently executed on the three original bodies. However, the decision-making process gains significance concerning which specific body to target for the intended alteration. This will be demonstrated in the next example, where we will add a feature to accomodate a power cable to the **Housing** body.
+An aspect to consider within this approach is that it is no longer possible to make changes to **Housing top** and **Housing bottom** using the part design workbench. Nonetheless, modifications can still be efficiently executed on the three original bodies. However, it is vital to make the right decision concerning which specific body to target for the modification. This will be demonstrated in the next example, where we will add a feature to accomodate a power cable to the **Housing** body.
 
 **1. Making Housing the active component**
 
@@ -196,6 +216,8 @@ It is helpful to choose a pragmatic approach: for simple projects, the overhead 
 
 
 # Using a skeleton to drive dimensions of the bodies
+
+As the number of bodies grows, it becomes increasingly important that the dimensoins of each body are driven by a common model. The concept of a skeleton offers a central entity to manage mechanical interfaces and drive major dimensions.
 
 ## First steps
 
@@ -348,6 +370,10 @@ The graph shows that:
 * References made by the **Part workbench** act on bodies, while references made by the **Part design workbench** act on features
 * None of the arrows are red, indicating there are no errors in this graph
 
+## Interference check
+
+Although FreeCAD lacks a mechanical interference check function, it is easy to perform an interference check on two bodies. Simply select both bodies and execute the <kbd>Intersection</kbd> command from the part workbench. If the result is a body without volume, apparently there is no interference.
+
 ## Persistent section cut
 
 Using the persistent section cut (View > Persistent section cut) interfaces can be visually inspected in detail:
@@ -374,7 +400,6 @@ Things to specifically pay attention to:
 </p>
 
 As can be seen in this screenshot, both the top of the rim and the sides of the the groove are printale with multiple adjacent tracks.
-
 
 
 # Creating references to the internal components of the housing
@@ -517,7 +542,7 @@ This is a good example to demonstrate why some changes need modifications in the
 
 # Creating a complex hinge
 
-The next project is a housing with a hinge. It can for instance be used for pencils or glasses. There is a magnet in each shell to keep the housing closed. An advantage of 3D printing is that we can pause printing at a designated layer to insert the magnets manually. When completed, the magnets are fully enveloped by the printed part.
+The next project is a housing with a hinge. It can for instance be used for pencils or glasses. There is a magnet in each shell to lock the housing. An advantage of 3D printing is that we can pause printing at a designated layer to insert the magnets manually. When completed, the magnets are fully enveloped by the printed part.
 
 This is the front view of the case when it is closed:
 
@@ -573,16 +598,16 @@ For the design of a 3D printed hinge it is important to take into account the ac
   <img src="./09-hinge/sketch-hinge-right.png" alt="Sketch hinge right" width="527">
 </p>
 
-The line going down is perpendicular to the bottom flat side of the housing. This line is a reference for the flat face mentioned above.
+The 135° angle is chosen to ensure both housing shells are printable without support structures.
 
-There is also geometry representing the round parts of the hinge.
+The line going down is perpendicular to the bottom flat side of the housing. This line is a reference for the flat face mentioned above, ensuring the hosuing can be opened fully flat without mechanical inteference.
 
-**sk hinge top** basically divides the length of the hinge in three parts:
+There is also geometry representing the round parts of the hinge, **sk hinge top** basically divides the length of the hinge in three types of sections:
 * elements that are connected to the bottom part of the housing
 * elements that are connected to the top part of the housing
 * space between the parts (S)
 
-The sketch contains only two dimensions: the total length of the hinge and the space between the parts. The radius of the cilinders is also modelled, but this has been derived from **sk hinge right**
+The sketch contains only two dimensions: the total length of the hinge and the space between the parts in axial direction. The radius of the cilinders is also modelled, but this has been derived from **sk hinge right**
 
 <p align="center">
   <img src="./09-hinge/sketch-hinge-top.png" alt="Sketch hinge top" width="605">
@@ -595,7 +620,7 @@ The housing is modelled in two different bodies: **Housing external** represents
 The relevant sketches from the skeleton are imported as shape binders. The bottom and top datum plane are defined as 'normal to edge', referencing the Z-axis and the bottom  and top most points. The contour **he base** is modelled on **he pln bottom** and extruded until **he pln top**.
 
 <p align="center">
-  <img src="./09-hinge/housing-external-1.png" alt="Housing external 1" width="950">
+  <img src="./09-hinge/housing-external-1.png" alt="Housing external 1" width="842">
 </p>
 
 **he chop off top** chops off the oblique surfaces of **HE Base**.
@@ -628,7 +653,7 @@ The cross section of the hinge **he hinge** is created on **he pln hinge left**,
   <img src="./09-hinge/housing-external-6.png" alt="Housing external 6" width="323">
 </p>
 
-**he hinge** is extruded from **he pln hinge left** to **he pln hinge right**, forming HE Hinge:
+**he hinge** is extruded from **he pln hinge left** to **he pln hinge right**, forming **HE Hinge**:
 
 <p align="center">
   <img src="./09-hinge/housing-external-7.png" alt="Housing external 7" width="920">
@@ -676,7 +701,7 @@ The housing is created by boolean subtraction of **Housing external** and **Hous
 
 ## Separation bottom
 
-The **Separation bottom** body starts with importing **sb ref housing external top** and **sb ref housing external right**, and then construction only **sb pln bottom**. A rectangle is drawn in a plane 0.1 mm below the XY plane, to ensure there is 0.2 mm space between both shells when the housing is closed. The rectangle is 3 mm larger than the outer shape.
+The **Separation bottom** body starts with importing **sb ref housing external top** and **sb ref housing external right**, and then construction only **sb pln bottom**. A rectangle is drawn in a plane 0.1 mm below the XY plane, to ensure there is 0.2 mm space between both shells when the housing is closed, allowing for tolerances of 3D printing. The rectangle is 3 mm larger than the outer shape.
 
 <p align="center">
   <img src="./09-hinge/separation-bottom-1.png" alt="Separation bottom 1" width="1175">
@@ -704,7 +729,7 @@ Two datum planes are created, **sb pln hinge slot 2 begin** and **sb pln hinge s
   <img src="./09-hinge/separation-bottom-5.png" alt="Separation bottom 5" width="639">
 </p>
 
-Line B of sketch **sb hinge slot** on datum plane **sb pln hinge slot 2 begin** is under an angle of 160° relative to line A of **sb ref hinge right**. This is because the top housing can be opened 160°, ensuring sufficient space between both parts. The larger circle in **sb ref hinge right** is used, also to create space in radial direction.
+Line B of sketch **sb hinge slot** on datum plane **sb pln hinge slot 2 begin** is under an angle of 160° relative to line A of **sb ref hinge right**. This is because the top housing can be opened 160°, ensuring sufficient space between both parts. The larger circle in **sb ref hinge right** is used, to provide space radially.
 
 <p align="center">
   <img src="./09-hinge/separation-bottom-6.png" alt="Separation bottom 6" width="933">
@@ -732,11 +757,13 @@ Line B of sketch **sb hinge slot** on datum plane **sb pln hinge slot 2 begin** 
 
 ## Separation top
 
-**Separation top** is very similar to **Separation bottom**, only now the slots are in locations 1, 3 and 5. Slots 1 and 3 were created individually, slot 5 is a mirror of slot 1.
+**Separation top** is very similar to **Separation bottom**, only now the slots are in locations 1, 3 and 5. 
 
 <p align="center">
   <img src="./09-hinge/separation-bottom-4.png" alt="Separation bottom 4" width="740">
 </p>
+
+Slots 1 and 3 were created individually, slot 5 is a mirror of slot 1.
 
 <p align="center">
   <img src="./09-hinge/separation-top.png" alt="Separation top" width="1079">
@@ -753,15 +780,15 @@ Line B of sketch **sb hinge slot** on datum plane **sb pln hinge slot 2 begin** 
 
 ## Final checks
 
-The dependency graph and check geometry tool that as described earlier reported no errors.
+The **Dependency graph** and **Check geometry tool** that as described earlier reported no errors.
 
-The persistent section cut also did not reveal problems:
+The **Persistent section cut** also reveals no problems:
 
 <p align="center">
   <img src="./09-hinge/hinge-check.png" alt="Hinge check" width="509">
 </p>
 
-The printability inspection also looks good:
+The **Printability inspection** also looks good:
 
 <p align="center">
   <img src="./09-hinge/printability-test-1.png" alt="Printability test 1" width="783">
@@ -777,57 +804,57 @@ If assemblies are static (no moving parts), it is possible to use the same globa
 
 This is how it works:
 
-1. Create the **Skeleton** body as usual, and save the model as a part named **Skeleton**. Add sketches that form important envelopes or mechanical interfaces between the parts.
+1. Create the **Skeleton** body as usual, 
+2. Add sketches that form important envelopes or mechanical interfaces between the parts.
+3. Save the model as a file named **Skeleton**
 
 <p align="center">
   <img src="./10-referencing-external-parts/skeleton-part.png" alt="Skeleton part" width="587">
 </p>
 
-2. Create a second file, named **Pipe**, and save that too. It is important that the part is saved to become a recipient for a link.
+4. Create a second file, named **Pipe**, and save that too. It is important that the part is saved to become a recipient for a link.
 
-Shape binders cannot link to elements in other files. Therefore, we need to first import the skeleton via a dynamic link. 
-
-3. While the **Pipe** part is open, select the **Skeleton** body in the model tree and choose the <kbd>Create link</kbd><img src="./10-referencing-external-parts/create-link-button.png" alt="Create link button" height="20"> button in the toolbar.
+5. Shape binders cannot directly link to elements in other files. Therefore, we need to first import **Skeleton** via a dynamic link. While the **Pipe** part is open, select the **Skeleton** body in the model tree and choose the <kbd>Make link</kbd><img src="./10-referencing-external-parts/create-link-button.png" alt="Make link button" height="20"> button in the toolbar.
 
 <p align="center">
-  <img src="./10-referencing-external-parts/create-link-to-skeleton.png" alt="Create link to skeleton" width="941">
+  <img src="./10-referencing-external-parts/create-link-to-skeleton.png" alt="Make link to skeleton" width="941">
 </p>
 
-4. Create a new body in the **Pipe** body, also named **Pipe**.
+6. Create a new body named **Pipe**.
 
-5. Create the required Shape binders and create the sketches like in previous examples.
+7. Create the required Shape binders and create the sketches and volumes like in previous examples.
 
 <p align="center">
   <img src="./10-referencing-external-parts/create-pipe-part.png" alt="Create pipe part" width="631">
 </p>
 
-6. Create a third file, named **Flange**
+8. Create a third file, named **Flange**
 
-7. Select the **Skeleton** body in the model tree and choose the <kbd>Create link</kbd><img src="./10-referencing-external-parts/create-link-button.png" alt="Create link button" height="20"> button.
+9. Select the **Skeleton** body in the model tree and choose the <kbd>Make link</kbd><img src="./10-referencing-external-parts/create-link-button.png" alt="Make link button" height="20"> button.
 
-8. Create a new body in the **Flange** part, named **Flange**
+10. Create a new body in the **Flange** part, named **Flange**
 
-9. Create the required Shape binders and create the sketches like in previous examples.
+11. Create the required Shape binders and create the sketches and volumes like in previous examples.
 
 <p align="center">
   <img src="./10-referencing-external-parts/create-flange-part-1.png" alt="Create flange part 1" width="569">
 </p>
 
-10. Create the model of the flange
+12. Create the model of the flange
 
 <p align="center">
   <img src="./10-referencing-external-parts/create-flange-part-2.png" alt="Create flange part 2" width="606">
 </p>
 
-11. Create a fourth file named **Assembly**
+13. Create a fourth file named **Assembly**
 
-12. Select the **Pipe** body in the model tree and choose <kbd>Create link</kbd><img src="./10-referencing-external-parts/create-link-button.png" alt="Create link button" height="20">
+14. Select the **Pipe** body in the model tree and choose <kbd>Make link</kbd><img src="./10-referencing-external-parts/create-link-button.png" alt="Make link button" height="20">
 
 <p align="center">
   <img src="./10-referencing-external-parts/import-pipe-in-assembly.png" alt="Import pipe in assembly" width="938">
 </p>
 
-13. Select the **Flange** body in the model tree and choose <kbd>Create link</kbd><img src="./10-referencing-external-parts/create-link-button.png" alt="Create link button" height="20">
+15. Select the **Flange** body in the model tree and choose <kbd>Make link</kbd><img src="./10-referencing-external-parts/create-link-button.png" alt="Make link button" height="20">
 
 <p align="center">
   <img src="./10-referencing-external-parts/import-flange-in-assembly.png" alt="Import flange in assembly" width="578">
@@ -835,3 +862,4 @@ Shape binders cannot link to elements in other files. Therefore, we need to firs
 
 Since both parts have been created in the same coordinate system, they are already in the right location and orientation.
 
+The skeleton still drives the major dimensions and interfaces in all parts of the assembly.
