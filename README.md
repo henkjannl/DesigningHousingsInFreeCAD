@@ -22,8 +22,11 @@ In [Chapter 1](./01-concept/Readme.md), the general concept is explained on how 
 
 My first thought was to create a Youtube tutorial, but I decided would become quite long. A document is perhaps easier to speed up for the reader. A disadvantage of a document is that I will not learn how many views I have received. Please respond in the Issues section of Github if you appreciate this tutorial or if you have ideas for improvement.
 
+This document is also availble as [pdf here](./Designing%20housings%20in%20FreeCAD.pdf)
+
 HenkJan van der Pol
 
+[Creative commons:](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 <p align="left">
   <img src=".\01-concept/images/cc-by-nc-sa.png" alt="Copyright creative commons cc-by-nc-sa" width="200">
 </p>
