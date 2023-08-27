@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="793.70081"
+   height="328.81891"
+   viewBox="0 0 210 87.000003"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="concept.svg"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   inkscape:export-filename="concept.png"
+   inkscape:export-xdpi="180"
+   inkscape:export-ydpi="180"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     showgrid="true"
+     inkscape:zoom="1.1360914"
+     inkscape:cx="349.88382"
+     inkscape:cy="181.76354"
+     inkscape:window-width="1920"
+     inkscape:window-height="1000"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     inkscape:export-bgcolor="#ffffffff">
+    <inkscape:grid
+       id="grid2"
+       units="mm"
+       originx="0"
+       originy="-102.04724"
+       spacingx="2.9999999"
+       spacingy="3.0000001"
+       empcolor="#3f3fff"
+       empopacity="0.25098039"
+       color="#3f3fff"
+       opacity="0.1254902"
+       empspacing="5"
+       dotted="false"
+       gridanglex="30"
+       gridanglez="30"
+       visible="true" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1">
+    <marker
+       style="overflow:visible"
+       id="Dot"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Dot"
+       markerWidth="0.60000002"
+       markerHeight="0.60000002"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+         d="M 5,0 C 5,2.76 2.76,5 0,5 -2.76,5 -5,2.76 -5,0 c 0,-2.76 2.3,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         sodipodi:nodetypes="sssss"
+         id="path17" />
+    </marker>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-26.999998)">
+    <path
+       id="path16"
+       style="color:#000000;font-variation-settings:normal;overflow:visible;opacity:1;vector-effect:none;fill:#00d9dc;fill-opacity:1;stroke:#009ea0;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+       d="m 174.00047,47.999914 c -11.63398,1.66e-4 -21.00027,8.492108 -21.00027,19.040698 v 3.546554 h 3.2644 l 2.73627,7.412467 h 2.99981 l 2.73472,-7.412467 h 3.26492 v -1.5875 c 0,-3.323993 2.67616,-6.000104 6.00015,-6.000151 h 11.99978 c 3.32399,-4.7e-5 5.99964,2.676158 5.99964,6.000151 v 1.5875 h 3.26491 l 2.73524,7.412467 h 3.00033 l 2.73523,-7.412467 H 207 v -3.546554 c 0,-10.54859 -9.36578,-19.040863 -20.99975,-19.040698 z" />
+    <path
+       id="path4"
+       style="color:#000000;font-variation-settings:normal;overflow:visible;opacity:1;vector-effect:none;fill:#1adc00;fill-opacity:1;stroke:#000000;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+       d="M 75.000001,70.587498 V 44.999999 H 135 v 25.587499 h -6.26488 L 126,77.999998 h -3.00033 l -2.73535,-7.4125 H 89.735354 l -2.735114,7.4125 h -2.999817 l -2.73587,-7.4125 z"
+       sodipodi:nodetypes="ccccccccccccc" />
+    <path
+       id="path15"
+       style="color:#000000;overflow:visible;opacity:1;fill:#f119ff;fill-opacity:1;stroke:#9700a0;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+       d="m 153.0002,71.999999 v 4.958871 c 0,10.54859 9.36629,19.040864 21.00027,19.040698 h 11.99978 C 197.63422,95.999403 207,87.50746 207,76.95887 v -4.958871 h -2.99981 l -2.99982,5.999634 h -3.00033 l -2.99982,-5.999634 h -3.00033 v 2.999817 c 0,3.323993 -2.67565,6.000104 -5.99964,6.000151 h -11.99978 c -3.32399,4.7e-5 -6.00015,-2.676158 -6.00015,-6.000151 v -2.999817 h -3.00034 l -2.9993,5.999634 h -2.99981 l -3.00085,-5.999634 z" />
+    <path
+       id="rect1"
+       style="color:#000000;overflow:visible;fill:#91abff;stroke:#0034dc;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round"
+       d="M 24,48.000398 C 12.366012,48.000564 2.9997317,56.492495 2.9997317,67.041096 v 9.918258 c 0,10.548601 9.3662803,19.040864 21.0002683,19.040698 l 11.999765,-1.71e-4 c 11.633987,-1.65e-4 20.999752,-8.492097 20.999752,-19.040698 v -9.918258 c 0,-10.548601 -9.365765,-19.040863 -20.999752,-19.040698 z m 0,14.999601 11.999765,-1.71e-4 c 3.323996,-4.7e-5 5.999634,2.676155 5.999634,6.000151 v 6.00015 c 0,3.323996 -2.675638,6.000104 -5.999634,6.000151 L 24,81.000451 c -3.323996,4.7e-5 -6.000151,-2.676155 -6.000151,-6.000151 v -6.00015 c 0,-3.323996 2.676155,-6.000104 6.000151,-6.000151 z"
+       sodipodi:nodetypes="ssssssssssssssssss" />
+    <path
+       id="rect3"
+       style="color:#000000;overflow:visible;opacity:1;fill:#ff9191;stroke:#dc0000;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round"
+       d="m 75.000003,71.999999 v 27 H 135 v -27 h -6.0003 l -2.9997,6 h -3.00033 l -2.99994,-6 H 89.999939 l -2.999695,6 h -2.999817 l -3.000455,-6 z"
+       sodipodi:nodetypes="ccccccccccccc" />
+    <g
+       id="g3"
+       transform="translate(-7.0585689,1.9227484)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.20127px;line-height:100%;font-family:'Yanone Kaffeesatz';-inkscape-font-specification:'Yanone Kaffeesatz, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;fill:#2b2b2b;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         x="24.005362"
+         y="32.251858"
+         id="text8"><tspan
+           sodipodi:role="line"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.20127px;font-family:'Yanone Kaffeesatz';-inkscape-font-specification:'Yanone Kaffeesatz, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#2b2b2b;stroke:none;stroke-width:0.264583px"
+           x="24.005362"
+           y="32.251858"
+           id="tspan10">Housing</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.46751px;line-height:100%;font-family:osifont;-inkscape-font-specification:osifont;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;fill:#2b2b2b;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         x="24.005362"
+         y="36.152798"
+         id="text2"><tspan
+           sodipodi:role="line"
+           style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:3.46751px;font-family:'Yanone Kaffeesatz';-inkscape-font-specification:'Yanone Kaffeesatz, Light';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#2b2b2b;stroke:none;stroke-width:0.264583px"
+           x="24.005362"
+           y="36.152798"
+           id="tspan2">Total housing without separation</tspan></text>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.20127px;line-height:100%;font-family:'Yanone Kaffeesatz';-inkscape-font-specification:'Yanone Kaffeesatz, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;fill:#2b2b2b;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="85.682449"
+       y="34.174377"
+       id="text5"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.20127px;font-family:'Yanone Kaffeesatz';-inkscape-font-specification:'Yanone Kaffeesatz, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#2b2b2b;stroke:none;stroke-width:0.264583px"
+         x="85.682449"
+         y="34.174377"
+         id="tspan5">Separation top</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.46751px;line-height:100%;font-family:osifont;-inkscape-font-specification:osifont;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;fill:#2b2b2b;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="85.682449"
+       y="38.075317"
+       id="text6"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:3.46751px;font-family:'Yanone Kaffeesatz';-inkscape-font-specification:'Yanone Kaffeesatz, Light';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#2b2b2b;stroke:none;stroke-width:0.264583px"
+         x="85.682449"
+         y="38.075317"
+         id="tspan11">part of the housing that ends up in the top</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.20127px;line-height:100%;font-family:'Yanone Kaffeesatz';-inkscape-font-specification:'Yanone Kaffeesatz, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;fill:#2b2b2b;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="85.682449"
+       y="106.67021"
+       id="text13"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.20127px;font-family:'Yanone Kaffeesatz';-inkscape-font-specification:'Yanone Kaffeesatz, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#2b2b2b;stroke:none;stroke-width:0.264583px"
+         x="85.682449"
+         y="106.67021"
+         id="tspan13">Separation bottom</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.46751px;line-height:100%;font-family:osifont;-inkscape-font-specification:osifont;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;fill:#2b2b2b;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="85.682449"
+       y="110.57115"
+       id="text14"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:3.46751px;font-family:'Yanone Kaffeesatz';-inkscape-font-specification:'Yanone Kaffeesatz, Light';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#2b2b2b;stroke:none;stroke-width:0.264583px"
+         x="85.682449"
+         y="110.57115"
+         id="tspan14">part of the housing that ends up in the bottom</tspan></text>
+    <ellipse
+       style="color:#000000;overflow:visible;fill:#13a000;fill-opacity:1;stroke:none;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round"
+       id="ellipse18"
+       cx="169.90263"
+       cy="34.583282"
+       rx="4.5000005"
+       ry="4.5" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:7.05556px;line-height:100%;font-family:'Helvetica LT';-inkscape-font-specification:'Helvetica LT Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="169.96967"
+       y="37.088005"
+       id="text18"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:7.05556px;font-family:'Helvetica LT';-inkscape-font-specification:'Helvetica LT Bold';text-align:center;text-anchor:middle;fill:#ffffff;stroke:none;stroke-width:0.264583px"
+         x="169.96967"
+         y="37.088005"
+         id="tspan18">2</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.20127px;line-height:100%;font-family:'Yanone Kaffeesatz';-inkscape-font-specification:'Yanone Kaffeesatz, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;fill:#2b2b2b;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="176.34969"
+       y="35.953815"
+       id="text19"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.20127px;font-family:'Yanone Kaffeesatz';-inkscape-font-specification:'Yanone Kaffeesatz, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#2b2b2b;stroke:none;stroke-width:0.264583px"
+         x="176.34969"
+         y="35.953815"
+         id="tspan19">Housing top</tspan></text>
+    <ellipse
+       style="color:#000000;overflow:visible;fill:#194fff;stroke:none;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round"
+       id="ellipse20"
+       cx="156.55885"
+       cy="34.583282"
+       rx="4.5000005"
+       ry="4.5" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:7.05556px;line-height:100%;font-family:'Helvetica LT';-inkscape-font-specification:'Helvetica LT Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="156.57582"
+       y="37.088005"
+       id="text21"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:7.05556px;font-family:'Helvetica LT';-inkscape-font-specification:'Helvetica LT Bold';text-align:center;text-anchor:middle;fill:#ffffff;stroke:none;stroke-width:0.264583px"
+         x="156.57582"
+         y="37.088005"
+         id="tspan21">1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.20127px;line-height:100%;font-family:'Yanone Kaffeesatz';-inkscape-font-specification:'Yanone Kaffeesatz, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;fill:#2b2b2b;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="161.93303"
+       y="36.393326"
+       id="text22"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.20127px;font-family:'Yanone Kaffeesatz';-inkscape-font-specification:'Yanone Kaffeesatz, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#2b2b2b;stroke:none;stroke-width:0.264583px"
+         x="161.93303"
+         y="36.393326"
+         id="tspan22">&amp;</tspan></text>
+    <ellipse
+       style="color:#000000;font-variation-settings:normal;overflow:visible;opacity:1;vector-effect:none;fill:#dc0000;fill-opacity:1;stroke:none;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+       id="ellipse22"
+       cx="169.90263"
+       cy="107.07909"
+       rx="4.5000005"
+       ry="4.5" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.20127px;line-height:100%;font-family:'Yanone Kaffeesatz';-inkscape-font-specification:'Yanone Kaffeesatz, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;fill:#2b2b2b;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="176.34969"
+       y="108.44963"
+       id="text24"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.20127px;font-family:'Yanone Kaffeesatz';-inkscape-font-specification:'Yanone Kaffeesatz, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#2b2b2b;stroke:none;stroke-width:0.264583px"
+         x="176.34969"
+         y="108.44963"
+         id="tspan24">Housing bottom</tspan></text>
+    <ellipse
+       style="color:#000000;overflow:visible;fill:#194fff;stroke:none;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round"
+       id="ellipse24"
+       cx="156.55885"
+       cy="107.07909"
+       rx="4.5000005"
+       ry="4.5" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:7.05556px;line-height:100%;font-family:'Helvetica LT';-inkscape-font-specification:'Helvetica LT Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="156.57582"
+       y="109.58382"
+       id="text25"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:7.05556px;font-family:'Helvetica LT';-inkscape-font-specification:'Helvetica LT Bold';text-align:center;text-anchor:middle;fill:#ffffff;stroke:none;stroke-width:0.264583px"
+         x="156.57582"
+         y="109.58382"
+         id="tspan25">1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.20127px;line-height:100%;font-family:'Yanone Kaffeesatz';-inkscape-font-specification:'Yanone Kaffeesatz, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;fill:#2b2b2b;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="161.93303"
+       y="108.88914"
+       id="text26"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.20127px;font-family:'Yanone Kaffeesatz';-inkscape-font-specification:'Yanone Kaffeesatz, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#2b2b2b;stroke:none;stroke-width:0.264583px"
+         x="161.93303"
+         y="108.88914"
+         id="tspan26">&amp;</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:7.05556px;line-height:100%;font-family:'Helvetica LT';-inkscape-font-specification:'Helvetica LT Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="169.94849"
+       y="109.51679"
+       id="text27"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:7.05556px;font-family:'Helvetica LT';-inkscape-font-specification:'Helvetica LT Bold';text-align:center;text-anchor:middle;fill:#ffffff;stroke:none;stroke-width:0.264583px"
+         x="169.94849"
+         y="109.51679"
+         id="tspan27">3</tspan></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.529167;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Dot)"
+       d="m 10.499764,34.583767 v 8.594391 l 7.5,16.069699"
+       id="path27" />
+    <ellipse
+       style="color:#000000;overflow:visible;fill:#194fff;stroke:none;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round"
+       id="path3"
+       cx="10.499764"
+       cy="34.583767"
+       rx="4.5000005"
+       ry="4.5" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:7.05556px;line-height:100%;font-family:'Helvetica LT';-inkscape-font-specification:'Helvetica LT Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="10.516723"
+       y="37.08849"
+       id="text3"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:7.05556px;font-family:'Helvetica LT';-inkscape-font-specification:'Helvetica LT Bold';text-align:center;text-anchor:middle;fill:#ffffff;stroke:none;stroke-width:0.264583px"
+         x="10.516723"
+         y="37.08849"
+         id="tspan3">1</tspan></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.529167;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Dot)"
+       d="M 79.235422,34.583539 V 43.17793 L 84.000003,54"
+       id="path28"
+       sodipodi:nodetypes="ccc" />
+    <ellipse
+       style="color:#000000;overflow:visible;fill:#13a000;fill-opacity:1;stroke:none;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round"
+       id="ellipse3"
+       cx="79.23542"
+       cy="34.583538"
+       rx="4.5000005"
+       ry="4.5" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:7.05556px;line-height:100%;font-family:'Helvetica LT';-inkscape-font-specification:'Helvetica LT Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="79.252373"
+       y="37.088261"
+       id="text4"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:7.05556px;font-family:'Helvetica LT';-inkscape-font-specification:'Helvetica LT Bold';text-align:center;text-anchor:middle;fill:#ffffff;stroke:none;stroke-width:0.264583px"
+         x="79.252373"
+         y="37.088261"
+         id="tspan4">2</tspan></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.529167;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Dot)"
+       d="M 79.235422,107.07935 V 97.682075 L 84.000003,90"
+       id="path29"
+       sodipodi:nodetypes="ccc" />
+    <ellipse
+       style="color:#000000;overflow:visible;fill:#dc0000;fill-opacity:1;stroke:none;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round"
+       id="ellipse12"
+       cx="79.23542"
+       cy="107.07935"
+       rx="4.5000005"
+       ry="4.5" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:7.05556px;line-height:100%;font-family:'Helvetica LT';-inkscape-font-specification:'Helvetica LT Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="79.252373"
+       y="109.58408"
+       id="text12"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:7.05556px;font-family:'Helvetica LT';-inkscape-font-specification:'Helvetica LT Bold';text-align:center;text-anchor:middle;fill:#ffffff;stroke:none;stroke-width:0.264583px"
+         x="79.252373"
+         y="109.58408"
+         id="tspan12">3</tspan></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.529167;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Dot)"
+       d="m 163.02348,38.816615 v 7.006891 l 4.76459,8.176237"
+       id="path30"
+       sodipodi:nodetypes="ccc" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.529167;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Dot)"
+       d="m 163.02348,102.31659 v -4.634772 l 4.76459,-7.682075"
+       id="path31"
+       sodipodi:nodetypes="ccc" />
+  </g>
+</svg>
