@@ -10,7 +10,7 @@ This example demonstrates the concept of constructing a housing through the appl
   <img src="./images/concept.png" alt="Concept" width="1135">
 </p>
 
-**1. Housing Creation:**
+**1. Housing Creation**
 
 Begin by forming the **housing body** (1) as a singular body, disregarding any separation concerns for now.
 
@@ -18,7 +18,7 @@ Begin by forming the **housing body** (1) as a singular body, disregarding any s
   <img src="./images/housing.png" alt="Housing" width="650"> 
 </p>
 
-**2. Top Separation:**
+**2. Top Separation**
 
 Generate a second body (2) called **Separation top**. This component envelops the volume of the upper section of the housing. In this example, the **Separation top** simply consists of a block and an extruded pipe:
 
@@ -26,7 +26,7 @@ Generate a second body (2) called **Separation top**. This component envelops th
   <img src="./images/separation-top.png" alt="Separation top" width="672">
 </p>
 
-**3. Bottom Separation:**
+**3. Bottom Separation**
 
 Similarly, create another body (3) named **Separation bottom**. This part defines the lower separation boundary.
 
@@ -34,7 +34,7 @@ Similarly, create another body (3) named **Separation bottom**. This part define
   <img src="./images/separation-bottom.png" alt="Separation bottom" width="595">
 </p>
 
-**4. Boolean Operations for Top Housing:**
+**4. Boolean Operations for Top Housing**
 
 * Switch to the Part workbench
 * Select the **Housing** body and the **Separation top** body. 
@@ -46,7 +46,7 @@ Similarly, create another body (3) named **Separation bottom**. This part define
   <img src="./images/housing-top.png" alt="Housing top" width="796">
 </p>
 
-**5. Boolean Operations for Bottom Housing:**
+**5. Boolean Operations for Bottom Housing**
 
 Although the **Housing** body may appear to have vanished from the model tree, it still exists within the **Housing top** body, as it contributed to its formation. By expanding the **Housing top** body, you'll find the **Housing** body within. To establish the **Bottom housin**g body, select the **Housing** body along with the **Separation bottom** body. Reapply the <kbd>Intersection</kbd> command to these chosen bodies, resulting in a new body named **Common 001**. Rename this resultant body as **Housing bottom** (1 & 3).
 
@@ -54,7 +54,7 @@ Although the **Housing** body may appear to have vanished from the model tree, i
   <img src="./images/housing-bottom.png" alt="Housing bottom" width="799">
 </p>
 
-**6. Finalizing Appearance:**
+**6. Modifying colors**
 
 Conclude the process by adjusting the color and transparency attributes of both housing components. 
 

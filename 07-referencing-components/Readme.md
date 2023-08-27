@@ -7,7 +7,7 @@
 
 In the next example, we will build a housing for an internet of things application. The device will contain a thermometer/barometer/hygrometer connected to a microcontroller. The microcontroller can record the environmental conditions and report logged data over a wireless link.
 
-For projects like this, it is important to obtain accurate 3D models. Usually they are available as STEP file or in another format which can be imported in FreeCAD. If not, you need to create them yourself. If this is the case, ensure you take enough headroom for tolerances.
+For projects like this, it is important to obtain accurate 3D models. Usually, they are available as STEP file or in another format which can be imported in FreeCAD. If not, you need to create them yourself. If this is the case, ensure you take enough headroom for tolerances.
 
 **1. Import the components in the FreeCAD file**
 
@@ -15,7 +15,7 @@ I usually use <kbd>File</kbd> > <kbd>Merge project</kbd>.
 
 Orient the components well relative to each other. 
 
-If you can use symmetry in your design, it also make sense to orient the components relative to the coordinate system, but for more flexibility you can also create planes for that in the **Skeleton** body in the next step.
+If you can use symmetry in your design, it also makes sense to orient the components relative to the coordinate system, but for more flexibility you can also create planes for that in the **Skeleton** body in the next step.
 
 <p align="center">
   <img src="./images/import-components.png" alt="Import components" width="853">

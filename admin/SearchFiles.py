@@ -128,11 +128,32 @@ selection.sort(key= TAGS[SORT], reverse=SORT_REVERSE)
 print('\n'.join([de.name for de in selection[:8]]))
 if len(selection)>8: print('...')
 
-# Export file results
-try:
-	results='\n'.join(['\t'.join(COLUMNS)]+['\t'.join([TAGS[k](de) for k in COLUMNS]) for de in selection])
-except:
-	print(selection)
+import re
+commands = []
+output_path = r'C:\Users\henkj\IOT\DesigningHousingsInFreeCAD\admin'
+for de in selection:
+
+	try:
+		number = re.search('[0-9][0-9]', de.path).group()
+	except:
+		number='00'
+
+	working_dir = os.path.split(de.path)[0]
+	output_file = os.path.join(output_path, f'translated{number}')
+
+	# Change working directory to where the files are located
+	commands.append(f'cd {working_dir}')
+
+	# Convert markdown to HTML
+	commands.append(f'pandoc "{de.path}" -f markdown --embed-resources=true --output "{output_file}.html"')
+
+	# Next convert HTML to docx
+	commands.append(f'pandoc "{output_file}.html" --embed-resources=true --output "{output_file}.docx"')
+
+	# Next delete the HTML file
+	commands.append(f'del "{output_file}.html"')
+
+results = '\n\r'.join(commands)
 
 # Copy to clipboard		
 import pyperclip

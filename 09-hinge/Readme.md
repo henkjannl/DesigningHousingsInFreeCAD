@@ -4,7 +4,7 @@
 
 # 9 Creating a complex hinge
 
-The next project is a housing with a hinge. It can for instance be used for pencils or glasses. There is a magnet in each shell to lock the housing. An advantage of 3D printing is that we can pause printing at a designated layer to insert the magnets manually. When completed, the magnets are fully enveloped by the printed part.
+The next project regards a housing with a hinge. It can for instance be used for pencils or glasses. There is a magnet in each shell to lock the housing. An advantage of 3D printing is that we can pause printing at a designated layer to insert the magnets manually. When completed, the magnets are fully enveloped by the printed part.
 
 This is the front view of the case when it is closed:
 
@@ -54,7 +54,7 @@ Two sketches define the hinge:
 
 For the design of a 3D printed hinge it is important to take into account the accuracy of printing. There needs to be a slit of about 0.3 mm between the parts in all directions.
 
-**sk hinge right** defines the right view of the hinge. The smallest circle represents the hole for the hinge pin. The circle around that represents the cilindrical shape of the hinge. The outermost circle is a reference for the play between both parts of the housing.
+**sk hinge right** defines the right view of the hinge. The smallest (ø1.4 mm) circle represents the hole for the hinge pin. The circle around that represents the cylindrical shape of the hinge (which has a wall thickness of 1.35 mm). The outermost circle is a reference for the play (0.3 mm) between both parts of the housing.
 
 <p align="center">
   <img src="./images/sketch-hinge-right.png" alt="Sketch hinge right" width="527">
@@ -62,14 +62,14 @@ For the design of a 3D printed hinge it is important to take into account the ac
 
 The 135° angle is chosen to ensure both housing shells are printable without support structures.
 
-The line going down is perpendicular to the bottom flat side of the housing. This line is a reference for the flat face mentioned above, ensuring the hosuing can be opened fully flat without mechanical inteference.
+The line going down is perpendicular to the bottom flat side of the housing. This line is a reference for the flat face mentioned above, ensuring the housing can be opened fully flat without mechanical interference.
 
 There is also geometry representing the round parts of the hinge, **sk hinge top** basically divides the length of the hinge in three types of sections:
 * elements that are connected to the bottom part of the housing
 * elements that are connected to the top part of the housing
 * space between the parts (S)
 
-The sketch contains only two dimensions: the total length of the hinge and the space between the parts in axial direction. The radius of the cilinders is also modelled, but this has been derived from **sk hinge right**
+The sketch contains only two dimensions: the total length of the hinge and the space between the parts in axial direction. The radius of the cylinders is also modelled, but this has been derived from **sk hinge right**
 
 <p align="center">
   <img src="./images/sketch-hinge-top.png" alt="Sketch hinge top" width="605">
@@ -179,7 +179,7 @@ The **Separation bottom** body starts with importing **sb ref housing external t
   <img src="./images/separation-bottom-3.png" alt="Separation bottom 3" width="782">
 </p>
 
-Next we will create the slot for protrustion 2 from the top housing.
+Next we will create the slot for protrusion 2 from the top housing.
 
 <p align="center">
   <img src="./images/separation-bottom-4.png" alt="Separation bottom 4" width="796">

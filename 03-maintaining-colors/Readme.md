@@ -4,7 +4,7 @@
 
 # 3 Maintaining the colors of both housing bodies
 
-When a body is created as a result of a boolean operation of bodies, colors are overwritten upon each change of these bodies. To circumvent this, a simple workaround is proposed to prevent having to reset the colors after each change.
+When a body is created by a boolean operation of bodies, colors are overwritten upon each change of these bodies. To circumvent this, a simple workaround is proposed to prevent having to reset the colors after each change.
 
 One of the simplest solutions to maintain the colors of the bodies involves the creation of duplicates of the bodies in question, followed by the application of the desired color to the replicated bodies.
 

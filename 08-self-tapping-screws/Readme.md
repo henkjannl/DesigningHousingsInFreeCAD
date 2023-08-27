@@ -16,7 +16,7 @@ To make the screw holes parametric, I created a model of the screw which contain
   <img src="./images/additional-sketch.png" alt="Additional sketch" width="518">
 </p>
 
-Below the head of the screw, the sketch has a cilindrical section which is intended to end up in the part that needs to be fixed, and a conical part in which the thread will be formed.
+Below the head of the screw, the sketch has a cylindrical section which is intended to end up in the part that needs to be fixed, and a conical part in which the thread will be formed.
 
 <p align="left">
   <img src="./images/warning.png" alt="Warning 1" height="35">
@@ -50,7 +50,7 @@ This is how it works:
 Now if we move or rotate the screw, the hole will move with it.
 
 ## Creating a pillar for the screw
-Sometimes the seperation of the housing does not line up with the separation in the screw hole model. For instance, In the housing model I lined up the separation in the middle of the USB port, so the housing can be closed easily. 
+Sometimes the separation of the housing does not line up with the separation in the screw hole model. For instance, In the housing model I lined up the separation in the middle of the USB port, so the housing can be closed easily. 
 
 To solve this, we can make a local pillar in the bottom housing and a hole in the top housing.
 
@@ -79,7 +79,7 @@ To solve this, we can make a local pillar in the bottom housing and a hole in th
   <img src="./images/separation-bottom-with-pillars.png" alt="Separation bottom with pillars" width="736">
 </p>
 
-Also repeat the procedure to create the holes in **Separation top**.
+Repeat the procedure to create the holes in **Separation top**.
 
 <p align="center">
   <img src="./images/screw-holes-in-separation-top.png" alt="Screw holes in separation top" width="722">

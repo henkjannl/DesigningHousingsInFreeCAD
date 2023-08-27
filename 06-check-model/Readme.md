@@ -6,11 +6,11 @@
 
 ## Using the Check geometry tool
 
-The Check geometry tool from the part workbench can be used to check if the 3D model is valid (Part workbench > Part > Check geometry ![Dependency graph](./images/check-geometry-button-small.png)). It is beyond the scope of this tutorial to explain how to solve common problems. MangoJelly has an [excellent video](https://www.youtube.com/watch?v=bw1Y5mrHrWY) on this tool. If causes are hard to find, the FreeCAD community is also willing to help out.
+The Check geometry tool from the part workbench can be used to check if the 3D model is valid (Part workbench > Part > Check geometry ![Dependency graph](./images/check-geometry-button-small.png)). It is beyond the scope of this tutorial to explain how to solve common problems. MangoJelly has an [excellent video](https://www.youtube.com/watch?v=bw1Y5mrHrWY) on this tool. If causes are hard to find, the FreeCAD community is also willing to help.
 
 ## Dependency graph
 
-It can sometimes (although rarely) occur that links between bodies cause errors that are very hard to find. Sometimes the problem is that there are crosslinks between bodies, i.e. body A refers to body B and body B refers back to body A. This circular reference causes FreeCAD to stop automatic recalculation of the part.
+Sometimes links between bodies cause errors that are very hard to find. Sometimes the problem is that there are crosslinks between bodies, i.e. body A refers to body B and body B refers back to body A. This circular reference causes FreeCAD to stop automatic recalculation of the part.
 
 The dependency graph (menu <kbd>Tools</kbd> > <kbd>Dependency Graph</kbd>) can be very helpful to spot those errors. To use this tool, the third party software [Graphviz](https://graphviz.org/) must be installed (see [https://wiki.freecad.org/Std_DependencyGraph](https://wiki.freecad.org/Std_DependencyGraph)).
 
@@ -58,7 +58,7 @@ Things to specifically pay attention to:
   <img src="./images/slicing.png" alt="Slicing" width="1075">
 </p>
 
-As can be seen in this screenshot, both the top of the rim and the sides of the the groove are printale with multiple adjacent tracks.
+As can be seen in this screenshot, both the top of the rim and the sides of the groove are printable with multiple adjacent tracks.
 
 * [Up to "Table of contents"](../Readme.md)
 * [Back to "5 Using a skeleton to drive dimensions of the bodies"](../05-skeleton-body/Readme.md)

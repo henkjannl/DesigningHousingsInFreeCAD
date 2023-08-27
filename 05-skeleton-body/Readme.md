@@ -4,7 +4,7 @@
 
 # 5 Using a skeleton to drive dimensions of the bodies
 
-As the number of bodies grows, it becomes increasingly important that the dimensoins of each body are driven by a common model. The concept of a skeleton offers a central entity to manage mechanical interfaces and drive major dimensions.
+As the number of bodies grows, it becomes increasingly important that the dimensions of each body are driven by a common model. The concept of a skeleton offers a central entity to manage mechanical interfaces and drive major dimensions.
 
 ## First steps
 
@@ -46,7 +46,7 @@ Here's how it works:
   <img src="./images/drawing-base-sketch.png" alt="Drawing base sketch" width="617">
 </p>
 
-**Note:** The 'front side' of the datum plane, on which a sketch is created, is sometimes counter-intuitive, so it seems as if you need to draw a mirrorred sketch. To solve this, set the <kbd>Map reversed</kbd> property of the datum plane to <kbd>true</kbd>. It is best to do this early on in the process, since it often corrupts the sketch.
+**Note:** The 'front side' of the datum plane, on which a sketch is created, is sometimes counter-intuitive, so it seems as if you need to draw a mirrored sketch. To solve this, set the <kbd>Map reversed</kbd> property of the datum plane to <kbd>true</kbd>. It is best to do this early in the process, since it often corrupts the sketch.
 
 7. Extrude the up until the other datum plane using the <kbd>Up to face</kbd> option. When using the <kbd>Select face</kbd> button, the plane can also be selected in the model tree.
 
@@ -54,7 +54,7 @@ Here's how it works:
   <img src="./images/extrude-up-to-the-next-plane.png" alt="Extrude up to the next plane" width="787">
 </p>
 
-The method proposed here requires more effort. It wil prove it's benefits when modifications are necessary lateron in the process.
+The method proposed here requires more effort. It wil prove its benefits when modifications are necessary later.
 
 
 ## Finalization
@@ -123,7 +123,7 @@ And with the top off:
 Note that:
 * the main outer dimensions of the housing can be changed by only changing dimensions in the **Skeleton** body
 * not all sketches from the **Skeleton** body have been imported, e.g. the rim is not needed in the **Housing** body 
-* details which are independent from other bodies (such as the chamfer), were only defined in the **Housing** body
+* details which are independent from other bodies (such as the chamfer), were only defined in the **Housing** body  (i.e. not derived from the **Skeleton**)
 
 The proof of the pudding is in the eating. We change a few dimensions in the **Skeleton** body to see if the model is indeed parametric. The result is as expected:
 
