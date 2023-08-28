@@ -76,14 +76,14 @@ To solve this, we can make a local pillar in the bottom housing and a hole in th
   <img src="./images/screw-pillar-sketch-in-separation-bottom.png" alt="Screw pillar sketch in separation bottom" width="467">
 </p>
 
-1.  Create a revolution and name it **SB Screw pillar 1** 
-2.  Repeat the same procedure for the other pillars. In this case, I did pillar 3 in the same way and created pillars 2 and 4 by mirroring.
+9.  Create a revolution and name it **SB Screw pillar 1** 
+10.  Repeat the same procedure for the other pillars. In this case, I did pillar 3 in the same way and created pillars 2 and 4 by mirroring.
 
 <p align="center">
   <img src="./images/separation-bottom-with-pillars.png" alt="Separation bottom with pillars" width="736">
 </p>
 
-Repeat the procedure to create the holes in **Separation top**.
+11. Repeat the procedure to create the holes in **Separation top**. Use the larger sketch in the skeleton for the hole, to ensure a good fit with the pillar.
 
 <p align="center">
   <img src="./images/screw-holes-in-separation-top.png" alt="Screw holes in separation top" width="722">
