@@ -13,7 +13,7 @@ This tutorial is divided in 10 chapters:
 |-------------|-----------------------------------------------------------------------------------------------------------------------|
 | <img src="./01-concept/images/icon.png" alt="Concept" width="100"> | [1. Concept of making a housing using boolean operation of bodies](./01-concept/Readme.md) <br> Discusses the general concept on how to setup the design of a housing using boolean operation of different bodies. |
 | <img src="./02-making-modifications/images/icon.png" alt="Concept" width="100"> | [2. Modifying the Housing Design](./02-making-modifications/Readme.md) <br> Demonstrates that it is still quite manageable to make modifications to each body when setting up a design like this. |
-| <img src="./03-maintaining-colors/images/icon.png" alt="Colors" width="100"> | [3. Maintaining the colors of both housing bodies](./03-maintaining-colors/Readme.md) <br> Proposes a workaround for the fact that the colors of the parts are overwritten when making modifications to the design. |
+| <img src="./03-retaining-colors/images/icon.png" alt="Colors" width="100"> | [3. Retaining the colors of both housing bodies](./03-retaining-colors/Readme.md) <br> Proposes a workaround for the fact that the colors of the parts are overwritten when making modifications to the design. |
 | <img src="./04-naming-convention/images/icon.png" alt="Naming convention" width="100">  | [4. Applying a naming convention](./04-naming-convention/Readme.md) <br> Proposes a naming convention, so it remains easy to locate a feature when modifications are needed, even when designs become complex. |
 | <img src="./05-skeleton-body/images/icon.png" alt="Skeleton" width="100"> | [5. Using a skeleton to drive dimensions of the bodies](./05-skeleton-body/Readme.md) <br> Explains the concept of using a skeleton body to manage links between different bodies of the model without the risk of circular references. <br>Skeletons also make the model more robust. |
 | <img src="./06-check-model/images/icon.png" alt="Check model" width="100"> | [6. Checking the model](./06-check-model/Readme.md) <br> Different ways to check if the model and the design are still valid. |
@@ -30,6 +30,6 @@ HenkJan van der Pol
 
 [Creative commons:](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 <p align="left">
-  <img src=".\01-concept/images/cc-by-nc-sa.png" alt="Copyright creative commons cc-by-nc-sa" width="200">
+  <img src="./01-concept/images/cc-by-nc-sa.png" alt="Copyright creative commons cc-by-nc-sa" width="200">
 </p>
 

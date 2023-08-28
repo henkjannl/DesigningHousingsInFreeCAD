@@ -54,6 +54,10 @@ Sometimes the separation of the housing does not line up with the separation in 
 
 To solve this, we can make a local pillar in the bottom housing and a hole in the top housing.
 
+<p align="center">
+  <img src="./images/screw-pillar.png" alt="Screw pillar" width="755">
+</p>
+
 1. Create a shape binder **sk ref screw hole 1** in the **Skeleton** body, referencing the screw hole of the first screw.
 2. Make the model of the original screw invisible 
 3. Select **sk ref screw hole 1** as a plane to draw the sketch of the screw pillar on

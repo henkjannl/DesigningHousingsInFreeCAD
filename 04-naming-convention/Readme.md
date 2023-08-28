@@ -1,5 +1,5 @@
 * [Up to "Table of contents"](../Readme.md)
-* [Back to "3 Maintaining the colors of both housing bodies"](../03-maintaining-colors/Readme.md)
+* [Back to "3 Retaining the colors of both housing bodies"](../03-Retaining-colors/Readme.md)
 * [Next to "5 Using a skeleton to drive dimensions of the bodies"](../05-skeleton-body/Readme.md)
 
 # 4 Applying a naming convention
@@ -52,5 +52,5 @@ It is helpful to choose a pragmatic approach: for simple projects, the overhead 
 
 
 * [Up to "Table of contents"](../Readme.md)
-* [Back to "3 Maintaining the colors of both housing bodies"](../03-maintaining-colors/Readme.md)
+* [Back to "3 Retaining the colors of both housing bodies"](../03-Retaining-colors/Readme.md)
 * [Next to "5 Using a skeleton to drive dimensions of the bodies"](../05-skeleton-body/Readme.md)

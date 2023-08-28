@@ -1,6 +1,6 @@
 * [Up to "Table of contents"](../Readme.md)
 * [Back to "1 Concept of making a housing using boolean operation of bodies"](../01-concept/Readme.md)
-* [Next to "3 Maintaining the colors of both housing bodies"](../03-maintaining-colors/Readme.md)
+* [Next to "3 Retaining the colors of both housing bodies"](../03-retaining-colors/Readme.md)
 
 # 2 Modifying the Housing Design
 
@@ -36,4 +36,4 @@ In [chapter 8](../08-self-tapping-screws/Readme.md), pillars are created for mou
 
 * [Up to "Table of contents"](../Readme.md)
 * [Back to "1 Concept of making a housing using boolean operation of bodies"](../01-concept/Readme.md)
-* [Next to "3 Maintaining the colors of both housing bodies"](../03-maintaining-colors/Readme.md)
+* [Next to "3 Retaining the colors of both housing bodies"](../03-retaining-colors/Readme.md)
