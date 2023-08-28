@@ -24,10 +24,6 @@ The graph shows that:
 * References made by the **Part workbench** act on bodies, while references made by the **Part design workbench** act on features
 * None of the arrows are red, indicating there are no errors in this graph
 
-* [Up to "Table of contents"](../Readme.md)
-* [Back to "Using a skeleton to drive dimensions of the bodies"](./05-skeleton-body/Readme.md)
-* [Next to "Creating references to the internal components of the housing"](./07-referencing-components/Readme.md)
-
 
 ## Interference check
 
