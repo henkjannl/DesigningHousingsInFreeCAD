@@ -4,7 +4,7 @@
 
 # 8 Using self tapping screws
 
-I often use self tapping screws for such housings. With the right tolerances, these screws work really well and require no post processing (tapping, inserts) in the parts, which makes it quite fast. These screws are available from many different suppliers at AliExpress.
+I often use self tapping screws for such housings. With the right tolerances, these screws work really well and require no post processing (tapping, inserts) in the parts, which makes it quite fast. It is also convenient that a part with a hole for the countersunk head can be printed upside down without the need for support material. These screws are available from many different suppliers at AliExpress, both in stainless steel and black versions.
 
 <p align="center">
   <img src="./images/self-tapping-screws.png" alt="Self tapping screws" width="150">
@@ -18,13 +18,10 @@ To make the screw holes parametric, I created a model of the screw which contain
 
 Below the head of the screw, the sketch has a cylindrical section which is intended to end up in the part that needs to be fixed, and a conical part in which the thread will be formed.
 
-<p align="left">
-  <img src="./images/warning.png" alt="Warning 1" height="35">
-</p>
-
-<p align="left">
-  <img src="./images/warning2.png" alt="Warning 2" height="35">
-</p>
+| <!--                                                    --> | <!-- -->         |
+|-------------------------------------------------------------|------------------|
+| <img src="./images/warning.png" alt="Warning 1" width="41">| In reality, these screws are not conical. Some day I will make a model that more closely resembles the shape of those screws. Nonetheless, this shape works well in my printed models. |
+| <img src="./images/warning.png" alt="Warning 2" width="41">| By tweaking the shape of the hole, I achieved a good fit for these screws for PETG printed on my Prusa Mk3s. With a different printer or printing material, the tweaking may have a different outcome |
 
 ## Creating a screw hole
 This is how it works:
@@ -35,19 +32,15 @@ This is how it works:
 
 3. Make the sketch in the original model invisible (so we can only select elements from the shape binder)
 
-4. Select the center line of the shape binder, and create a datum axis through it, named **hs axs screw hole 1**
+4. Use the groove command on **hs ref screw hole 1** to create the screw hole, using <kbd>select reference...</kbd> for the axis, and select the center line of the shape binder as the axis for the revolve 
+
+5. Rename the groove **HS Screw hole 1**
 
 <p align="center">
-  <img src="./images/create-centerline.png" alt="Create centerline" width="676">
+  <img src="./images/create-groove.png" alt="Create groove" width="707">
 </p>
 
-5. Use the groove command on **hs ref screw hole 1** to create thre screw hole, using **hs axs screw hole 1** as a centerline. Rename the groove **HS Screw hole 1**
-
-<p align="center">
-  <img src="./images/create-groove.png" alt="Create groove" width="694">
-</p>
-
-Now if we move or rotate the screw, the hole will move with it.
+Now if we move or rotate the screw, the screw hole will move with it.
 
 ## Creating a pillar for the screw
 Sometimes the separation of the housing does not line up with the separation in the screw hole model. For instance, In the housing model I lined up the separation in the middle of the USB port, so the housing can be closed easily. 
