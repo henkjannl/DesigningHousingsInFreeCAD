@@ -1,5 +1,5 @@
-* [Up to "Table of contents"](../Readme.md)
-* [a link](https://github.com/henkjannl/DesigningHousingsInFreeCAD/blob/main/Readme.md)
+* [Up to "Table of contents"](../README.md)
+* [a link](https://github.com/henkjannl/DesigningHousingsInFreeCAD/blob/main/README.md)
 * [Next to "2 Modifying the Housing Design"](../02-making-modifications/Readme.md)
 
 
