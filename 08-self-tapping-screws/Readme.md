@@ -21,11 +21,8 @@ Below the head of the screw, the sketch has a cylindrical section which is inten
 > [!WARNING]  
 > In reality, these screws are not conical. Some day I will make a model that more closely resembles the shape of those screws. Nonetheless, this shape works well in my printed models.
 
-
-| <!--                                                    --> | <!-- -->         |
-|-------------------------------------------------------------|------------------|
-| <img src="./images/warning.png" alt="Warning 1" width="41">| In reality, these screws are not conical. Some day I will make a model that more closely resembles the shape of those screws. Nonetheless, this shape works well in my printed models. |
-| <img src="./images/warning.png" alt="Warning 2" width="41">| By tweaking the shape of the hole, I achieved a good fit for these screws for PETG printed on my Prusa Mk3s. With a different printer or printing material, the tweaking may have a different outcome |
+> [!WARNING]  
+> By tweaking the shape of the hole, I achieved a good fit for these screws for PETG printed on my Prusa Mk3s. With a different printer or printing material, the tweaking may have a different outcome
 
 ## Creating a screw hole
 This is how it works:
