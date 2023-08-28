@@ -1,4 +1,4 @@
-* [Up to "Table of contents"](../Readme.md)
+* [Up to "Table of contents"](../README.md)
 * [Back to "1 Concept of making a housing using boolean operation of bodies"](../01-concept/Readme.md)
 * [Next to "3 Retaining the colors of both housing bodies"](../03-retaining-colors/Readme.md)
 
@@ -34,6 +34,6 @@ This operation overwrites the original colors assigned to the **Housing bottom**
 
 In [chapter 8](../08-self-tapping-screws/Readme.md), pillars are created for mounting screws. This is good example where modifications are not made to the housing body, but to the bottom and top separation bodies instead.
 
-* [Up to "Table of contents"](../Readme.md)
+* [Up to "Table of contents"](../README.md)
 * [Back to "1 Concept of making a housing using boolean operation of bodies"](../01-concept/Readme.md)
 * [Next to "3 Retaining the colors of both housing bodies"](../03-retaining-colors/Readme.md)

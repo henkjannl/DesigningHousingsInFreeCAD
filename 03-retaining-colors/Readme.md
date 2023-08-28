@@ -1,4 +1,4 @@
-* [Up to "Table of contents"](../Readme.md)
+* [Up to "Table of contents"](../README.md)
 * [Back to "2 Modifying the Housing Design"](../02-making-modifications/Readme.md)
 * [Next to "4 Applying a naming convention"](../04-naming-convention/Readme.md)
 
@@ -30,6 +30,6 @@ An additional benefit stemming from this workaround is the ability to generate m
 
 This workaround comes at a cost. Every boolean operation and copy makes the model more computationally expensive, so when the model tree gets long (see the dependency graph in [Chapter 6](./06-check-model/Readme.md)), recalculation takes progressively longer when changes are made.
 
-* [Up to "Table of contents"](../Readme.md)
+* [Up to "Table of contents"](../README.md)
 * [Back to "2 Modifying the Housing Design"](../02-making-modifications/Readme.md)
 * [Next to "4 Applying a naming convention"](../04-naming-convention/Readme.md)

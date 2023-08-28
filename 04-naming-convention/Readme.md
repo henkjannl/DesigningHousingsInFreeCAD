@@ -1,4 +1,4 @@
-* [Up to "Table of contents"](../Readme.md)
+* [Up to "Table of contents"](../README.md)
 * [Back to "3 Retaining the colors of both housing bodies"](../03-Retaining-colors/Readme.md)
 * [Next to "5 Using a skeleton to drive dimensions of the bodies"](../05-skeleton-body/Readme.md)
 
@@ -51,6 +51,6 @@ It is helpful to choose a pragmatic approach: for simple projects, the overhead 
 | `SB Groove`         | The groove created as a pipe from `sb groove crs` and `sb groove trj`                   |
 
 
-* [Up to "Table of contents"](../Readme.md)
+* [Up to "Table of contents"](../README.md)
 * [Back to "3 Retaining the colors of both housing bodies"](../03-Retaining-colors/Readme.md)
 * [Next to "5 Using a skeleton to drive dimensions of the bodies"](../05-skeleton-body/Readme.md)

@@ -1,4 +1,4 @@
-* [Up to "Table of contents"](../Readme.md)
+* [Up to "Table of contents"](../README.md)
 * [Back to "8 Using self tapping screws"](../08-self-tapping-screws/Readme.md)
 * [Next to "10 Referencing external parts"](../10-referencing-external-parts/Readme.md)
 
@@ -256,7 +256,7 @@ The **Printability inspection** also looks good:
   <img src="./images/printability-test-1.png" alt="Printability test 1" width="783">
 </p>
 
-* [Up to "Table of contents"](../Readme.md)
+* [Up to "Table of contents"](../README.md)
 * [Back to "8 Using self tapping screws"](../08-self-tapping-screws/Readme.md)
 * [Next to "10 Referencing external parts"](../10-referencing-external-parts/Readme.md)
 

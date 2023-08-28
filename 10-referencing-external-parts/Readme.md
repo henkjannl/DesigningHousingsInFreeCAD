@@ -1,4 +1,4 @@
-* [Up to "Table of contents"](../Readme.md)
+* [Up to "Table of contents"](../README.md)
 * [Back to "9 Creating a complex hinge"](../09-hinge/Readme.md)
 
 # 10 Referencing external parts
@@ -71,5 +71,5 @@ Since both parts have been created in the same coordinate system, they are alrea
 
 The skeleton still drives the major dimensions and interfaces in all parts of the assembly.
 
-* [Up to "Table of contents"](../Readme.md)
+* [Up to "Table of contents"](../README.md)
 * [Back to "9 Creating a complex hinge"](../09-hinge/Readme.md)

@@ -1,4 +1,4 @@
-* [Up to "Table of contents"](../Readme.md)
+* [Up to "Table of contents"](../README.md)
 * [Back to "7 Creating references to the internal components of the housing"](../07-referencing-components/Readme.md)
 * [Next to "9 Creating a complex hinge"](../09-hinge/Readme.md)
 
@@ -97,6 +97,6 @@ The changes will now automatically come through in both housing parts:
 
 This is a good example to demonstrate why some changes need modifications in the housing part, while others require changes in the separation parts.
 
-* [Up to "Table of contents"](../Readme.md)
+* [Up to "Table of contents"](../README.md)
 * [Back to "7 Creating references to the internal components of the housing"](../07-referencing-components/Readme.md)
 * [Next to "9 Creating a complex hinge"](../09-hinge/Readme.md)

@@ -1,4 +1,4 @@
-* [Up to "Table of contents"](../Readme.md)
+* [Up to "Table of contents"](../README.md)
 * [Back to "4 Applying a naming convention"](../04-naming-convention/Readme.md)
 * [Next to "6 Checking the model"](../06-check-model/Readme.md)
 
@@ -135,6 +135,6 @@ The proof of the pudding is in the eating. We change a few dimensions in the **S
   <img src="./images/result-after-changes-open.png" alt="Result after changes open" width="710">
 </p>
 
-* [Up to "Table of contents"](../Readme.md)
+* [Up to "Table of contents"](../README.md)
 * [Back to "4 Applying a naming convention"](../04-naming-convention/Readme.md)
 * [Next to "6 Checking the model"](../06-check-model/Readme.md)

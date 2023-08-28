@@ -1,4 +1,4 @@
-* [Up to "Table of contents"](../Readme.md)
+* [Up to "Table of contents"](../README.md)
 * [Back to "5 Using a skeleton to drive dimensions of the bodies"](../05-skeleton-body/Readme.md)
 * [Next to "7 Creating references to the internal components of the housing"](../07-referencing-components/Readme.md)
 
@@ -56,6 +56,6 @@ Things to specifically pay attention to:
 
 As can be seen in this screenshot, both the top of the rim and the sides of the groove are printable with multiple adjacent tracks.
 
-* [Up to "Table of contents"](../Readme.md)
+* [Up to "Table of contents"](../README.md)
 * [Back to "5 Using a skeleton to drive dimensions of the bodies"](../05-skeleton-body/Readme.md)
 * [Next to "7 Creating references to the internal components of the housing"](../07-referencing-components/Readme.md)

@@ -1,4 +1,4 @@
-* [Up to "Table of contents"](../Readme.md)
+* [Up to "Table of contents"](../README.md)
 * [Back to "6 Checking the model"](../06-check-model/Readme.md)
 * [Next to "8 Using self tapping screws"](../08-self-tapping-screws/Readme.md)
 
@@ -49,7 +49,6 @@ Create the **Housing**, **Separation top**, **Separation bottom**, **Housing top
 
 We can now move the boards around, and (within certain constraints), the cavities in the housing will follow the components.
 
-
-* [Up to "Table of contents"](../Readme.md)
+* [Up to "Table of contents"](../README.md)
 * [Back to "6 Checking the model"](../06-check-model/Readme.md)
 * [Next to "8 Using self tapping screws"](../08-self-tapping-screws/Readme.md)
