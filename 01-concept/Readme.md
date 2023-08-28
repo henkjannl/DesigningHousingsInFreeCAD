@@ -1,4 +1,5 @@
 * [Up to "Table of contents"](../Readme.md)
+* [link to top](../../tree/main/Readme.md)
 * [Next to "2 Modifying the Housing Design"](../02-making-modifications/Readme.md)
 
 
@@ -62,5 +63,5 @@ Conclude the process by adjusting the color and transparency attributes of both 
   <img src="./images/result.png" alt="Result" width="739"> 
 </p>
 
-* [Up to "Table of contents"](../Readme.md)
+* [Up to "Table of contents"](../README.md)
 * [Next to "2 Modifying the Housing Design"](../02-making-modifications/Readme.md)
