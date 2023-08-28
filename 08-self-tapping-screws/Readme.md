@@ -18,6 +18,10 @@ To make the screw holes parametric, I created a model of the screw which contain
 
 Below the head of the screw, the sketch has a cylindrical section which is intended to end up in the part that needs to be fixed, and a conical part in which the thread will be formed.
 
+> [!WARNING]  
+> In reality, these screws are not conical. Some day I will make a model that more closely resembles the shape of those screws. Nonetheless, this shape works well in my printed models.
+
+
 | <!--                                                    --> | <!-- -->         |
 |-------------------------------------------------------------|------------------|
 | <img src="./images/warning.png" alt="Warning 1" width="41">| In reality, these screws are not conical. Some day I will make a model that more closely resembles the shape of those screws. Nonetheless, this shape works well in my printed models. |
